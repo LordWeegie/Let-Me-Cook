@@ -16,4 +16,3 @@ color = Color(0, 0, 0, 1)
 
 [node name="CharacterBody2D" parent="." unique_id=1683270934 instance=ExtResource("3_jyhfs")]
 position = Vector2(144, 121)
-scale = Vector2(0.5, 0.5)

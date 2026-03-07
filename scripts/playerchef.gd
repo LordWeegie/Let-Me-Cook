@@ -13,6 +13,12 @@ func get_input():
 	if velocity.y > 0 or velocity.x > 0 or velocity.y < 0 or velocity.x < 0:
 		$AnimatedSprite2D.rotation = atan2(velocity.x, velocity.y)
 func _physics_process(delta):
+	if Input.is_action_pressed("sprint"):
+		$AnimatedSprite2D.speed_scale = 3.0
+		speed = 600
+	else:
+		$AnimatedSprite2D.speed_scale = 1.0
+		speed = 400
 	# Animation logic
 	if velocity.y != 0 or velocity.x != 0:
 		$AnimatedSprite2D.play("walk")

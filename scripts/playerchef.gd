@@ -3,7 +3,13 @@ extends CharacterBody2D
 @export var speed = 400
 
 func _ready() -> void:
+	$Label2.text = "Active Recipe: " + Global.active_food
 	$Label.add_theme_constant_override("shadow_outline_size", 20)
+	$Label2.add_theme_constant_override("shadow_outline_size", 20)
+	$Label3.add_theme_constant_override("shadow_outline_size", 20)
+	if Global.active_food == "baguette":
+		$Label3.text = Global.beaguette_recipe
+
 
 func get_input():
 	var input_direction = Input.get_vector("left", "right", "up", "down")

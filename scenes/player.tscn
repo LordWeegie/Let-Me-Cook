@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
 size = Vector2(128, 127)
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1683270934]
+[node name="waiter" type="CharacterBody2D" unique_id=1683270934]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1121917931]
 position = Vector2(1, 0.5)

@@ -60,11 +60,17 @@ func _physics_process(delta):
 	if Global.bowl_items.has("wheat") and Global.bowl_items.has("yeast") and Global.bowl_items.has("water") and Global.bowl_items.has("salt") and len(Global.bowl_items) <= 4 and Global.active_food == "baguette":
 		carrying_baguette_mix = true
 		carrying_food = true
+		Global.bowl_items = []
 	elif Global.active_food == "baguette" and len(Global.bowl_items) > 4:
 		carrying_food = true
 		carrying_slop = true
 		Global.bowl_items = []
-	
+	elif Global.active_food == "baguette" and len(Global.bowl_items) == 4 and carrying_baguette_mix == false:
+		print("the slop")
+		carrying_slop = true
+		carrying_food = true
+		Global.bowl_items = []
+		
 	if $RayCast2D.is_colliding():
 		if $RayCast2D.get_collider().is_in_group("oven"):
 			pass

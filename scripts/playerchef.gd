@@ -54,7 +54,13 @@ func _physics_process(delta):
 	if near_bowl and Input.is_action_just_pressed("empty_bowl"):
 		Global.bowl_items = []
 	if near_bowl and !carrying_food:
-		$Label4.text = "Press R to empty bowl"
+		if len(Global.bowl_items) > 0:
+			var new_bowl_items : String
+			new_bowl_items = ", ".join(Global.bowl_items)
+			print(new_bowl_items)
+			$Label4.text = "Items in bowl: " + new_bowl_items + ", press R to empty bowl"
+		else:
+			$Label4.text = "Press R to empty bowl"
 	if near_bowl:
 		if carrying_salt or carrying_water or carrying_wheat or carrying_yeast:
 			$Label4.text = "Press E to add ingredient or R to empty bowl"

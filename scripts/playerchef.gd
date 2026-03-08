@@ -37,7 +37,7 @@ func get_input():
 		$AnimatedSprite2D.rotation = atan2(velocity.x, velocity.y)
 
 func _physics_process(delta):
-	if carrying_slop:
+	if carrying_slop and carrying_food:
 		$Label.text = "Carrying: Slop"
 	if carrying_baguette_mix and oven_open:
 		if Input.is_action_just_pressed("pickup"):
@@ -63,6 +63,7 @@ func _physics_process(delta):
 	elif Global.active_food == "baguette" and len(Global.bowl_items) > 4:
 		carrying_food = true
 		carrying_slop = true
+		Global.bowl_items = []
 	
 	if $RayCast2D.is_colliding():
 		if $RayCast2D.get_collider().is_in_group("oven"):
@@ -144,6 +145,8 @@ func _physics_process(delta):
 		$AnimatedSprite2D.play("walk")
 	else:
 		$AnimatedSprite2D.stop()
+	if !carrying_food and !carrying_slop:
+		$Label.text = "Carrying: Nothing"
 	get_input()
 	move_and_slide()
 

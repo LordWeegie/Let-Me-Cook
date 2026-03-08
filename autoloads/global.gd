@@ -2,6 +2,8 @@ extends Node
 
 var active_food : String = "Nothing"
 
+var bowl_items : Array = []
+
 var foods : Array[String] = ["baguette", "coffee", "croissant"]
 
 var random_food : int = randi_range(0, 2)

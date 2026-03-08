@@ -18,11 +18,13 @@ func _process(delta: float) -> void:
 func _on_area_2d_2_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		oven_open = true
+		body.oven_open = true
 
 
 func _on_area_2d_2_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		oven_open = false
+		body.oven_open = false
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:

@@ -7,8 +7,12 @@ var carrying_water = false
 var carrying_salt = false
 var carrying_yeast = false
 var carrying_food = false
+var carrying_baguette_mix = false
 var looking_at_food = false
+@export var oven_open = false
 @export var near_bowl = false
+
+var item_carried
 
 func _ready() -> void:
 	$Label2.text = "Active Recipe: " + Global.active_food
@@ -29,11 +33,27 @@ func get_input():
 		$AnimatedSprite2D.rotation = atan2(velocity.x, velocity.y)
 
 func _physics_process(delta):
+	if carrying_baguette_mix and oven_open:
+		if Input.is_action_just_pressed("pickup"):
+			print("Baking...") 
+	if carrying_baguette_mix:
+		Global.bowl_items = []
+		$Label.text = "Carrying: Baguette Mix"
+	if near_bowl and Input.is_action_just_pressed("empty_bowl"):
+		Global.bowl_items = []
+	if near_bowl and !carrying_food:
+		$Label4.text = "Press R to empty bowl"
+	if Global.bowl_items.has("wheat") and Global.bowl_items.has("yeast") and Global.bowl_items.has("water") and Global.bowl_items.has("salt") and len(Global.bowl_items) <= 4 and Global.active_food == "baguette":
+		carrying_baguette_mix = true
+		carrying_food = true
+
 	if near_bowl:
 		if carrying_salt or carrying_water or carrying_wheat or carrying_yeast:
-			$Label4.text = "Press E to add ingredient"
+			$Label4.text = "Press E to add ingredient or R to empty bowl"
 		if Input.is_action_just_pressed("pickup"):
 			if carrying_salt or carrying_water or carrying_wheat or carrying_yeast:
+				Global.bowl_items.append(item_carried)
+				print(Global.bowl_items)
 				drop_items()
 	
 	if $RayCast2D.is_colliding():
@@ -42,8 +62,8 @@ func _physics_process(delta):
 
 
 	if not $RayCast2D.is_colliding():
-
 		looking_at_food = false
+		
 	if looking_at_food:
 		$Label4.text = "Press E to pick up"
 	if !looking_at_food and !near_bowl:
@@ -60,6 +80,7 @@ func _physics_process(delta):
 				print("Picking up object")
 				$Label.text = "Carrying: Wheat"
 				looking_at_food = false
+				item_carried = "wheat"
 				carrying_food = true
 				carrying_wheat = true
 		elif $RayCast2D.get_collider().is_in_group("salt") and carrying_food == false:
@@ -68,11 +89,13 @@ func _physics_process(delta):
 				looking_at_food = false
 				print("Picking up object")
 				$Label.text = "Carrying: Salt"
+				item_carried = "salt"
 				carrying_food = true
 				carrying_salt = true
 		elif $RayCast2D.get_collider().is_in_group("water") and carrying_food == false:
 			looking_at_food = true
 			if Input.is_action_just_pressed("pickup"):
+				item_carried = "water"
 				looking_at_food = false
 				print("Picking up object")
 				$Label.text = "Carrying: Water"
@@ -81,6 +104,7 @@ func _physics_process(delta):
 		elif $RayCast2D.get_collider().is_in_group("yeast") and carrying_food == false:
 			looking_at_food = true
 			if Input.is_action_just_pressed("pickup"):
+				item_carried = "yeast"
 				looking_at_food = false
 				print("Picking up object")
 				$Label.text = "Carrying: Yeast"
@@ -121,3 +145,4 @@ func drop_items():
 		carrying_wheat = false
 		carrying_water = false
 		carrying_yeast = false
+		item_carried = ""

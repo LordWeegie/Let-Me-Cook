@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://dr3v7mxlxhgp7"]
 
+[ext_resource type="Script" uid="uid://cff7plm754qj1" path="res://scripts/main.gd" id="1_85g3d"]
 [ext_resource type="PackedScene" uid="uid://bymywqs7ecq7f" path="res://scenes/level_designs.tscn" id="1_sugp2"]
 [ext_resource type="PackedScene" uid="uid://x3hef6m1emoe" path="res://scenes/playerchef.tscn" id="3_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://ci2ogvhhl5jhf" path="res://scenes/salt.tscn" id="3_tefeu"]
@@ -10,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://l0nw11siqver" path="res://scenes/bowl.tscn" id="8_tipki"]
 
 [node name="main" type="Node2D" unique_id=635454507]
+script = ExtResource("1_85g3d")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=272001021]
 offset_left = -1017.0
@@ -37,6 +39,8 @@ position = Vector2(-311, -135)
 
 [node name="CharacterBody2D" parent="." unique_id=1683270934 groups=["player"] instance=ExtResource("3_jyhfs")]
 position = Vector2(144, 121)
+speed = 400
+near_bowl = false
 
 [node name="Bowl" parent="." unique_id=2081893530 instance=ExtResource("8_tipki")]
 position = Vector2(256, 679)

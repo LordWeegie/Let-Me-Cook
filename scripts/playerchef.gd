@@ -9,16 +9,20 @@ var carrying_yeast = false
 var carrying_food = false
 var carrying_baguette_mix = false
 var looking_at_food = false
+var carrying_slop = false
 @export var oven_open = false
 @export var near_bowl = false
 
 var item_carried
 
 func _ready() -> void:
+	$Label.text = "Carrying: Nothing"
 	$Label2.text = "Active Recipe: " + Global.active_food
 	$Label.add_theme_constant_override("shadow_outline_size", 20)
 	$Label2.add_theme_constant_override("shadow_outline_size", 20)
 	$Label3.add_theme_constant_override("shadow_outline_size", 20)
+	$Label4.add_theme_constant_override("shadow_outline_size", 20)
+
 	if Global.active_food == "baguette":
 		$Label3.text = Global.beaguette_recipe
 
@@ -33,6 +37,8 @@ func get_input():
 		$AnimatedSprite2D.rotation = atan2(velocity.x, velocity.y)
 
 func _physics_process(delta):
+	if carrying_slop:
+		$Label.text = "Carrying: Slop"
 	if carrying_baguette_mix and oven_open:
 		if Input.is_action_just_pressed("pickup"):
 			print("Baking...") 
@@ -43,10 +49,6 @@ func _physics_process(delta):
 		Global.bowl_items = []
 	if near_bowl and !carrying_food:
 		$Label4.text = "Press R to empty bowl"
-	if Global.bowl_items.has("wheat") and Global.bowl_items.has("yeast") and Global.bowl_items.has("water") and Global.bowl_items.has("salt") and len(Global.bowl_items) <= 4 and Global.active_food == "baguette":
-		carrying_baguette_mix = true
-		carrying_food = true
-
 	if near_bowl:
 		if carrying_salt or carrying_water or carrying_wheat or carrying_yeast:
 			$Label4.text = "Press E to add ingredient or R to empty bowl"
@@ -55,6 +57,12 @@ func _physics_process(delta):
 				Global.bowl_items.append(item_carried)
 				print(Global.bowl_items)
 				drop_items()
+	if Global.bowl_items.has("wheat") and Global.bowl_items.has("yeast") and Global.bowl_items.has("water") and Global.bowl_items.has("salt") and len(Global.bowl_items) <= 4 and Global.active_food == "baguette":
+		carrying_baguette_mix = true
+		carrying_food = true
+	elif Global.active_food == "baguette" and len(Global.bowl_items) > 4:
+		carrying_food = true
+		carrying_slop = true
 	
 	if $RayCast2D.is_colliding():
 		if $RayCast2D.get_collider().is_in_group("oven"):
@@ -145,4 +153,6 @@ func drop_items():
 		carrying_wheat = false
 		carrying_water = false
 		carrying_yeast = false
+		carrying_slop = false
+		carrying_baguette_mix = false
 		item_carried = ""

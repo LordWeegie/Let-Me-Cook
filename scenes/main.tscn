@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://kp35ylbkoomb"]
+
+[ext_resource type="Script" uid="uid://cff7plm754qj1" path="res://scripts/main.gd" id="1_85g3d"]
+[ext_resource type="PackedScene" uid="uid://bymywqs7ecq7f" path="res://scenes/level_designs.tscn" id="1_sugp2"]
+[ext_resource type="PackedScene" uid="uid://x3hef6m1emoe" path="res://scenes/playerchef.tscn" id="3_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://ci2ogvhhl5jhf" path="res://scenes/salt.tscn" id="3_tefeu"]
+[ext_resource type="PackedScene" uid="uid://cn7mi76qdn6tx" path="res://scenes/water.tscn" id="4_o6xl0"]
+[ext_resource type="PackedScene" uid="uid://hqkcyae4vedj" path="res://scenes/wheat.tscn" id="5_tipki"]
+[ext_resource type="PackedScene" uid="uid://s81tdhohafuc" path="res://scenes/yeast.tscn" id="6_85g3d"]
+[ext_resource type="PackedScene" uid="uid://dv6cr6wse2vjs" path="res://scenes/oven.tscn" id="7_o6xl0"]
+[ext_resource type="PackedScene" uid="uid://l0nw11siqver" path="res://scenes/bowl.tscn" id="8_tipki"]
+[ext_resource type="PackedScene" uid="uid://d1woxfcfinafg" path="res://scenes/coffee.tscn" id="11_ya4ey"]
+
+[node name="main" type="Node2D" unique_id=635454507]
+script = ExtResource("1_85g3d")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=272001021]
+offset_left = -1017.0
+offset_top = -674.0
+offset_right = 1703.0
+offset_bottom = 1230.0
+color = Color(0, 0, 0, 1)
+
+[node name="level designs" parent="." unique_id=1218043559 instance=ExtResource("1_sugp2")]
+
+[node name="Salt" parent="." unique_id=8457333 instance=ExtResource("3_tefeu")]
+position = Vector2(804, 3)
+
+[node name="Water" parent="." unique_id=942962112 instance=ExtResource("4_o6xl0")]
+position = Vector2(425, 688)
+rotation = 3.1415927
+
+[node name="Wheat" parent="." unique_id=2081151013 instance=ExtResource("5_tipki")]
+position = Vector2(741, 37)
+
+[node name="Yeast" parent="." unique_id=1339194058 instance=ExtResource("6_85g3d")]
+position = Vector2(666, -16)
+
+[node name="oven" parent="." unique_id=1210281867 instance=ExtResource("7_o6xl0")]
+position = Vector2(-311, -135)
+
+[node name="Bowl" parent="." unique_id=2081893530 instance=ExtResource("8_tipki")]
+position = Vector2(256, 679)
+
+[node name="coffee_machine" parent="." unique_id=383375690]
+position = Vector2(98.00001, 633)
+rotation = -1.5707964
+
+[node name="coffee" parent="." unique_id=1548792351 instance=ExtResource("11_ya4ey")]
+position = Vector2(894, 36)
+
+[node name="CharacterBody2D" parent="." unique_id=1683270934 groups=["player"] instance=ExtResource("3_jyhfs")]
+position = Vector2(144, 121)

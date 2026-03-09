@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://bh8yc752t2ph6"]
+
+[ext_resource type="Script" uid="uid://dqwqn0c3qu2b5" path="res://waiter.gd" id="1_1grho"]
+[ext_resource type="Texture2D" uid="uid://b31qpdfgqolao" path="res://assets/tested.webp" id="2_4g130"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s7m2g"]
+size = Vector2(34, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o4m7j"]
+atlas = ExtResource("2_4g130")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ge1nj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o4m7j")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1447206207]
+script = ExtResource("1_1grho")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1547967600]
+texture_filter = 1
+position = Vector2(0, -1.5)
+scale = Vector2(3, 3)
+shape = SubResource("RectangleShape2D_s7m2g")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=195237430]
+texture_filter = 1
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_ge1nj")
+
+[node name="Lable1" type="Label" parent="." unique_id=27034045]
+offset_left = -215.0
+offset_top = -23.0
+offset_right = -128.0
+text = "hello world"

@@ -2,12 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d263l0x0rtuct"
-valid=false
+uid="uid://b31qpdfgqolao"
+path="res://.godot/imported/tested.webp-0ee9246cfaa3879d3cee667d1bbde9e8.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
-source_file="res://assets/things/._bowl.png"
+source_file="res://assets/tested.webp"
+dest_files=["res://.godot/imported/tested.webp-0ee9246cfaa3879d3cee667d1bbde9e8.ctex"]
 
 [params]
 

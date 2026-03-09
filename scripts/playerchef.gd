@@ -18,7 +18,7 @@ var item_carried
 
 func _ready() -> void:
 	$Label.text = "Carrying: Nothing"
-	$Label2.text = "Active Recipe: " + Global.active_food
+	$Label2.text = "Active Recipe: " + Global.active_food.capitalize()
 	$Label.add_theme_constant_override("shadow_outline_size", 20)
 	$Label2.add_theme_constant_override("shadow_outline_size", 20)
 	$Label3.add_theme_constant_override("shadow_outline_size", 20)
@@ -43,6 +43,7 @@ func _physics_process(delta):
 	if carrying_slop and carrying_food:
 		$Label.text = "Carrying: Slop"
 	if carrying_baguette_mix and oven_open:
+		$Label4.text = "Press E to bake Baguette Mix"
 		if Input.is_action_just_pressed("pickup"):
 			print("Baking...") 
 			drop_items()
@@ -57,13 +58,17 @@ func _physics_process(delta):
 		if len(Global.bowl_items) > 0:
 			var new_bowl_items : String
 			new_bowl_items = ", ".join(Global.bowl_items)
-			print(new_bowl_items)
-			$Label4.text = "Items in bowl: " + new_bowl_items + ", press R to empty bowl"
+			$Label4.text = "Items in bowl: " + new_bowl_items.capitalize() + ", press R to empty bowl"
 		else:
 			$Label4.text = "Press R to empty bowl"
 	if near_bowl:
 		if carrying_salt or carrying_water or carrying_wheat or carrying_yeast:
-			$Label4.text = "Press E to add ingredient or R to empty bowl"
+			if len(Global.bowl_items) > 0:
+				var new_bowl_items : String
+				new_bowl_items = ", ".join(Global.bowl_items)
+				$Label4.text = "Press E to add ingredient, Items in bowl: " + new_bowl_items.capitalize() + ", press R to empty bowl"
+			else:
+				$Label4.text = "Press E to add ingredient or R to empty bowl"
 		if Input.is_action_just_pressed("pickup"):
 			if carrying_salt or carrying_water or carrying_wheat or carrying_yeast:
 				Global.bowl_items.append(item_carried)
@@ -82,10 +87,6 @@ func _physics_process(delta):
 		carrying_slop = true
 		carrying_food = true
 		Global.bowl_items = []
-		
-	if $RayCast2D.is_colliding():
-		if $RayCast2D.get_collider().is_in_group("oven"):
-			pass
 
 
 	if not $RayCast2D.is_colliding():
@@ -93,7 +94,7 @@ func _physics_process(delta):
 		
 	if looking_at_food:
 		$Label4.text = "Press E to pick up"
-	if !looking_at_food and !near_bowl:
+	if !looking_at_food and !near_bowl and !oven_open:
 		$Label4.text = ""
 	if !carrying_food:
 		$Label.text = "Carrying: Nothing"
@@ -163,7 +164,7 @@ func _physics_process(delta):
 		$AnimatedSprite2D.play("walk")
 	else:
 		$AnimatedSprite2D.stop()
-	if !carrying_food and !carrying_slop:
+	if !carrying_food:
 		$Label.text = "Carrying: Nothing"
 	get_input()
 	move_and_slide()

@@ -26,7 +26,8 @@ color = Color(0, 0, 0, 1)
 position = Vector2(804, 3)
 
 [node name="Water" parent="." unique_id=942962112 instance=ExtResource("4_o6xl0")]
-position = Vector2(425, 686)
+position = Vector2(425, 688)
+rotation = 3.1415927
 
 [node name="Wheat" parent="." unique_id=2081151013 instance=ExtResource("5_tipki")]
 position = Vector2(741, 37)

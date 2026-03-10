@@ -1,11 +1,56 @@
 extends CharacterBody2D
 
-@export var speed = 400
+#speed
+const SPEED = 400
 
-func get_input():
-	var input_direction = Input.get_vector("left", "right", "up", "down")
-	velocity = input_direction * speed
+#holding
+var carrying_food = false
+var carrying_baguette = false
+var carrying_coffee = false
 
-func _physics_process(delta):
-	get_input()
+var item_carried
+
+#movement and turning!
+func _get_input():
+	var direction = Input.get_vector("left", "right", "up", "down")
+	velocity = direction * SPEED
+	
+	# Flip player as they move
+	if velocity.y > 0 or velocity.x > 0 or velocity.y < 0 or velocity.x < 0:
+		$AnimatedSprite2D.rotation = atan2(velocity.x, velocity.y)
+		
+		#moving using properties
+	if velocity.x > 0 or Input.is_action_pressed("right"):
+		$RayCast2D.rotation_degrees = -90
+		$AnimatedSprite2D.rotation_degrees = -90
+	if velocity.x < 0 or Input.is_action_pressed("left"):
+		$RayCast2D.rotation_degrees = 90
+		$AnimatedSprite2D.rotation_degrees = 90
+	if velocity.y > 0 or Input.is_action_pressed("down"):
+		$RayCast2D.rotation_degrees = 0
+		$AnimatedSprite2D.rotation_degrees = 0
+	if velocity.y < 0 or Input.is_action_pressed("up"):
+		$RayCast2D.rotation_degrees = 180
+		$AnimatedSprite2D.rotation_degrees = 180
+
+
+func _physics_process(delta: float) -> void:
+	_get_input()
 	move_and_slide()
+
+func _pickup():
+	#lable for baguette collected!
+	if carrying_baguette:
+		$Lable1.Text = "baguette aquired"
+	else:
+		$Lable1.Text = "obtained none"
+	
+	#lable for coffee collected!
+	if carrying_coffee:
+		$Lable1.Text = "carrying coffee"
+	else:
+		$Lable1.text = "obtained none"
+	
+	#lable for all time
+	if not carrying_food:
+		$Lable1.text = "obtained none"

@@ -14,6 +14,9 @@ var carrying_baguette = false
 var looking_at_cfm = false
 var carrying_coffee = false
 var carrying_coffee_bean = false
+var carrying_milk = false
+var carrying_butter = false
+var carrying_croissant_dough = false
 @export var loading_bar1 : Node2D
 @export var loading_bar2 : Node2D
 @export var oven_open = false
@@ -34,7 +37,8 @@ func _ready() -> void:
 		$Label3.text = Global.baguette_recipe
 	if Global.active_food == "coffee":
 		$Label3.text = Global.coffee_recipe
-
+	if Global.active_food == "croissant":
+		$Label3.text = Global.croissant_recipe
 func get_input():
 	var direction = Input.get_vector("left", "right", "up", "down")
 	velocity = direction * speed
@@ -98,7 +102,7 @@ func _physics_process(delta):
 		else:
 			$Label4.text = "Press R to empty bowl"
 	if near_bowl:
-		if carrying_salt or carrying_water or carrying_wheat or carrying_yeast:
+		if carrying_salt or carrying_water or carrying_wheat or carrying_yeast or carrying_milk or carrying_butter:
 			if len(Global.bowl_items) > 0:
 				var new_bowl_items : String
 				new_bowl_items = ", ".join(Global.bowl_items)
@@ -106,7 +110,7 @@ func _physics_process(delta):
 			else:
 				$Label4.text = "Press E to add ingredient or R to empty bowl"
 		if Input.is_action_just_pressed("pickup"):
-			if carrying_salt or carrying_water or carrying_wheat or carrying_yeast:
+			if carrying_salt or carrying_water or carrying_wheat or carrying_yeast or carrying_milk or carrying_butter:
 				Global.bowl_items.append(item_carried)
 				print(Global.bowl_items)
 				drop_items()
@@ -120,6 +124,15 @@ func _physics_process(delta):
 		Global.bowl_items = []
 	elif Global.active_food == "baguette" and len(Global.bowl_items) == 4 and carrying_baguette_mix == false:
 		print("the slop")
+		carrying_slop = true
+		carrying_food = true
+		Global.bowl_items = []
+
+	if Global.bowl_items.has("wheat") and Global.bowl_items.has("yeast") and Global.bowl_items.has("milk") and Global.bowl_items.has("butter") and Global.bowl_items.has("salt") and len(Global.bowl_items) <= 5 and Global.active_food == "croissant":
+		carrying_food = true
+		carrying_croissant_dough = true
+		Global.bowl_items = []
+	elif len(Global.bowl_items) >= 5 and Global.active_food == "croissant":
 		carrying_slop = true
 		carrying_food = true
 		Global.bowl_items = []
@@ -192,9 +205,29 @@ func _physics_process(delta):
 				$Label.text = "Carrying: Yeast"
 				carrying_food = true
 				carrying_yeast = true
+		elif $RayCast2D.get_collider().is_in_group("milk") and carrying_food == false:
+			looking_at_food = true
+			if Input.is_action_just_pressed("pickup"):
+				item_carried = "milk"
+				looking_at_food = false
+				print("Picking up object")
+				$Label.text = "Carrying: Milk"
+				carrying_food = true
+				carrying_milk = true
+		elif $RayCast2D.get_collider().is_in_group("butter") and carrying_food == false:
+			looking_at_food = true
+			if Input.is_action_just_pressed("pickup"):
+				item_carried = "butter"
+				looking_at_food = false
+				print("Picking up object")
+				$Label.text = "Carrying: Butter"
+				carrying_food = true
+				carrying_butter = true
 	else:
 		looking_at_food = false
 
+	if carrying_food and carrying_croissant_dough:
+		$Label.text = "Carrying: Croissant Dough"
 
 	if can_move:
 		if velocity.x > 0 or Input.is_action_pressed("right"):
@@ -240,4 +273,7 @@ func drop_items():
 		carrying_baguette = false
 		carrying_coffee = false
 		carrying_coffee_bean = false
+		carrying_milk = false
+		carrying_butter = false
+		carrying_croissant_dough = false
 		item_carried = ""

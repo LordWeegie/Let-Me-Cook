@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cb81q4r22h4ux"]
+
+[ext_resource type="Texture2D" uid="uid://d2r7vdcc34765" path="res://assets/food/crossiant/milk.png" id="1_b1h7t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i8xox"]
+size = Vector2(8.5, 13.75)
+
+[node name="milk" type="StaticBody2D" unique_id=198119891 groups=["milk"]]
+scale = Vector2(4, 4)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=220419064]
+texture_filter = 1
+texture = ExtResource("1_b1h7t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1886875938]
+position = Vector2(-0.75, 1.625)
+shape = SubResource("RectangleShape2D_i8xox")

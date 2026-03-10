@@ -18,6 +18,7 @@ var carrying_coffee_bean = false
 @export var loading_bar2 : Node2D
 @export var oven_open = false
 @export var near_bowl = false
+var can_move = true
 
 var item_carried
 
@@ -54,9 +55,11 @@ func _physics_process(delta):
 		if Global.coffee_machine_items.has("water") and Global.coffee_machine_items.has("coffee"):
 			if !carrying_coffee:
 				loading_bar2.animation_playing = true
-			await $"../Loadingbar2".animation_finished
+			drop_items()
+			await $"../Loadingbar2/AnimatedSprite2D".animation_finished
 			carrying_coffee = true
 			carrying_food = true
+			Global.coffee_machine_items = []
 		else:
 			carrying_slop = true
 			carrying_food = true
@@ -77,9 +80,11 @@ func _physics_process(delta):
 			loading_bar1.animation_playing = true
 			print("Baking...") 
 			drop_items()
+			can_move = false
 			await $"../Loadingbar/AnimatedSprite2D".animation_finished
 			carrying_baguette = true
 			carrying_food = true
+			can_move = true
 	if carrying_baguette_mix:
 		Global.bowl_items = []
 		$Label.text = "Carrying: Baguette Mix"
@@ -191,19 +196,19 @@ func _physics_process(delta):
 		looking_at_food = false
 
 
-
-	if velocity.x > 0 or Input.is_action_pressed("right"):
-		$RayCast2D.rotation_degrees = -90
-		$AnimatedSprite2D.rotation_degrees = -90
-	if velocity.x < 0 or Input.is_action_pressed("left"):
-		$RayCast2D.rotation_degrees = 90
-		$AnimatedSprite2D.rotation_degrees = 90
-	if velocity.y > 0 or Input.is_action_pressed("down"):
-		$RayCast2D.rotation_degrees = 0
-		$AnimatedSprite2D.rotation_degrees = 0
-	if velocity.y < 0 or Input.is_action_pressed("up"):
-		$RayCast2D.rotation_degrees = 180
-		$AnimatedSprite2D.rotation_degrees = 180
+	if can_move:
+		if velocity.x > 0 or Input.is_action_pressed("right"):
+			$RayCast2D.rotation_degrees = -90
+			$AnimatedSprite2D.rotation_degrees = -90
+		if velocity.x < 0 or Input.is_action_pressed("left"):
+			$RayCast2D.rotation_degrees = 90
+			$AnimatedSprite2D.rotation_degrees = 90
+		if velocity.y > 0 or Input.is_action_pressed("down"):
+			$RayCast2D.rotation_degrees = 0
+			$AnimatedSprite2D.rotation_degrees = 0
+		if velocity.y < 0 or Input.is_action_pressed("up"):
+			$RayCast2D.rotation_degrees = 180
+			$AnimatedSprite2D.rotation_degrees = 180
 
 	
 	if Input.is_action_pressed("sprint"):
@@ -219,7 +224,9 @@ func _physics_process(delta):
 		$AnimatedSprite2D.stop()
 	if !carrying_food:
 		$Label.text = "Carrying: Nothing"
-	get_input()
+	
+	if can_move:
+		get_input()
 	move_and_slide()
 
 func drop_items():

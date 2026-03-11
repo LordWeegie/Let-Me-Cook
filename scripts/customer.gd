@@ -28,5 +28,9 @@ func _physics_process(delta: float) -> void:
 	else:
 		$AnimatedSprite2D.play("jump")
 		
+	if velocity.x > 0:
+		$AnimatedSprite2D.flip_h = false
+	if velocity.x < 0:
+		$AnimatedSprite2D.flip_h = true
 
 	move_and_slide()

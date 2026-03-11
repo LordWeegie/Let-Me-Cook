@@ -19,6 +19,7 @@ var carrying_butter = false
 var carrying_croissant_dough = false
 var carrying_cut_croissant_dough = false
 var carrying_croissant = false
+var looking_at_delivery_point1 = false
 @export var loading_bar1 : Node2D
 @export var loading_bar2 : Node2D
 @export var loading_bar3 : Node2D
@@ -50,6 +51,10 @@ func get_input():
 	velocity = velocity.normalized() * speed
 
 func _physics_process(delta):
+	if $RayCast2D.is_colliding():
+		if $RayCast2D.get_collider().is_in_group("delivery_point1"):
+			if carrying_baguette or carrying_croissant or carrying_coffee:
+				looking_at_delivery_point1 = true
 	if oven_open and carrying_cut_croissant_dough:
 		$Label4.text = "Press E to bake Croissant Dough"
 		if Input.is_action_just_pressed("pickup"):
@@ -157,6 +162,7 @@ func _physics_process(delta):
 
 	if not $RayCast2D.is_colliding():
 		looking_at_food = false
+		looking_at_delivery_point1 = false
 	
 	if near_cutting_board and carrying_croissant_dough:
 		$Label4.text = "Press E to cut Croissant Dough"
@@ -187,7 +193,7 @@ func _physics_process(delta):
 			drop_items()
 	if looking_at_food and !looking_at_cfm:
 		$Label4.text = "Press E to pick up"
-	if !looking_at_food and !near_bowl and !oven_open and !looking_at_cfm and !near_cutting_board:
+	if !looking_at_food and !near_bowl and !oven_open and !looking_at_cfm and !near_cutting_board and !looking_at_delivery_point1:
 		$Label4.text = ""
 	if !carrying_food:
 		$Label.text = "Carrying: Nothing"
@@ -254,6 +260,10 @@ func _physics_process(delta):
 	else:
 		looking_at_food = false
 
+	if looking_at_delivery_point1 and $RayCast2D.is_colliding() and $RayCast2D.get_collider().is_in_group("delivery_point1"):
+		$Label4.text = "Press E to deliver food"
+		if Input.is_action_just_pressed("pickup"):
+			get_tree().change_scene_to_file("res://scenes/lobby.tscn")
 	if carrying_food and carrying_croissant_dough:
 		$Label.text = "Carrying: Uncut Croissant Dough"
 	elif carrying_food and carrying_cut_croissant_dough:

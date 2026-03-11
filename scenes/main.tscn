@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://bd3y5precvqcg" path="res://scenes/butter.tscn" id="13_a8y0u"]
 [ext_resource type="PackedScene" uid="uid://cb81q4r22h4ux" path="res://scenes/milk.tscn" id="14_jkv2x"]
 [ext_resource type="PackedScene" uid="uid://d22fkxcpwph7b" path="res://scenes/cutting_board.tscn" id="15_jkv2x"]
+[ext_resource type="PackedScene" uid="uid://bdrm5j2doksru" path="res://scenes/delivery_point1.tscn" id="16_jbj1t"]
 
 [node name="main" type="Node2D" unique_id=635454507]
 script = ExtResource("1_85g3d")
@@ -73,6 +74,10 @@ position = Vector2(533, 672)
 
 [node name="Loadingbar3" parent="." unique_id=322108636 instance=ExtResource("12_eb6dy")]
 position = Vector2(533, 672)
+
+[node name="StaticBody2D" parent="." unique_id=487359523 instance=ExtResource("16_jbj1t")]
+position = Vector2(134, -272)
+scale = Vector2(1.6000049, 1)
 
 [node name="CharacterBody2D" parent="." unique_id=1683270934 node_paths=PackedStringArray("loading_bar1", "loading_bar2", "loading_bar3") groups=["player"] instance=ExtResource("3_jyhfs")]
 position = Vector2(144, 121)

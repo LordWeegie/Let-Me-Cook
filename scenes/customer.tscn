@@ -62,10 +62,11 @@ animations = [{
 size = Vector2(11, 14)
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1537751614]
+scale = Vector2(0.3, 0.3)
 script = ExtResource("1_rjbu2")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=599205887]
-zoom = Vector2(4.5, 4.5)
+[node name="Camera2D" type="Camera2D" parent="." unique_id=599205887 groups=["player"]]
+zoom = Vector2(10, 10)
 position_smoothing_enabled = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=418275128]

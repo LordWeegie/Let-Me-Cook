@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bko3h7uxk6ss6"]
+
+[ext_resource type="Texture2D" uid="uid://bt1kcw84uip53" path="res://assets/tiles/croissant.png" id="1_ftaw6"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_on3yg"]
+texture = ExtResource("1_ftaw6")
+1:11/size_in_atlas = Vector2i(12, 5)
+1:11/0 = 0
+1:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-90.10922, 39.56892, -96.58414, 24.460789, -95.8647, 3.5971756, -78.77813, -14.568557, -62.410976, -26.619091, -54.497192, -32.73429, -46.943127, -35.25231, -33.273865, -35.072453, -33.456234, 39.510212)
+1:11/0/physics_layer_0/polygon_1/points = PackedVector2Array(-27.338526, -35.971745, -10.999624, -39.390553, -11.331099, -19.604599, -11.470711, 39.510212, -28.039509, 39.19158)
+1:11/0/physics_layer_0/polygon_2/points = PackedVector2Array(-5.0538816, -38.498688, -5.3511686, 39.687836, 10.850982, 39.539192, 10.850983, -28.09364, 5.6484566, -30.471937, 5.0538826, -33.147522, -0.297287, -37.160896)
+1:11/0/physics_layer_0/polygon_3/points = PackedVector2Array(8.223569, -34.92479, 14.010526, -34.92479, 13.908999, -38.07208, 8.223569, -37.970554)
+1:11/0/physics_layer_0/polygon_4/points = PackedVector2Array(17.868496, -36.44767, 21.726467, -36.346146, 21.624943, -38.07208, 17.868496, -38.07208)
+1:11/0/physics_layer_0/polygon_5/points = PackedVector2Array(26.079515, -25.36008, 48.113243, -20.392366, 69.4615, -9.877552, 83.16263, 1.2745228, 94.314705, 11.789337, 94.951965, 21.02963, 86.9862, 38.55432, 25.49046, 38.55432)
+
+[sub_resource type="TileSet" id="TileSet_b1whk"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_on3yg")
+
+[node name="CroissantTile" type="TileMap" unique_id=993946252]
+tile_set = SubResource("TileSet_b1whk")
+format = 2

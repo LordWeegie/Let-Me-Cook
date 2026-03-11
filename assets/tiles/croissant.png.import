@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cmoxpp6vmppnk"
-path="res://.godot/imported/delivery_point.png-e285cc24dbbfb09f25d2b039867c9a4f.ctex"
+uid="uid://bt1kcw84uip53"
+path="res://.godot/imported/croissant.png-bd93c0520e42f30e4ead14c2e770c3cc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/delivery_point.png"
-dest_files=["res://.godot/imported/delivery_point.png-e285cc24dbbfb09f25d2b039867c9a4f.ctex"]
+source_file="res://assets/tiles/croissant.png"
+dest_files=["res://.godot/imported/croissant.png-bd93c0520e42f30e4ead14c2e770c3cc.ctex"]
 
 [params]
 

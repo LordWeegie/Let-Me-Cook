@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://dhm5cd30k2f0p"]
+
+[ext_resource type="Texture2D" uid="uid://bgv3ckcsyaeny" path="res://assets/french_dude/idle.png" id="1_8qg4y"]
+[ext_resource type="Texture2D" uid="uid://bjagoevsdxi7d" path="res://assets/french_dude/walking_sprite_sheet.png" id="1_ktfjk"]
+[ext_resource type="Script" uid="uid://ddcvl85c6krpa" path="res://scripts/customer.gd" id="1_rjbu2"]
+[ext_resource type="Texture2D" uid="uid://ba3x72u22sdjv" path="res://assets/french_dude/jumping.png" id="2_xss0h"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qqxhk"]
+atlas = ExtResource("1_8qg4y")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_846g6"]
+atlas = ExtResource("1_8qg4y")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rjbu2"]
+atlas = ExtResource("2_xss0h")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qj8gj"]
+atlas = ExtResource("1_ktfjk")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w2wat"]
+atlas = ExtResource("1_ktfjk")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rjbu2"]
+animations = [{
+"frames": [{
+"duration": 1.7,
+"texture": SubResource("AtlasTexture_qqxhk")
+}, {
+"duration": 1.7,
+"texture": SubResource("AtlasTexture_846g6")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rjbu2")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_qj8gj")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_w2wat")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8qg4y"]
+size = Vector2(11, 14)
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1537751614]
+script = ExtResource("1_rjbu2")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=599205887]
+zoom = Vector2(4.5, 4.5)
+position_smoothing_enabled = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=418275128]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_rjbu2")
+animation = &"idle"
+frame_progress = 0.24828835
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1628297055 groups=["player"]]
+position = Vector2(-1.5, 1)
+shape = SubResource("RectangleShape2D_8qg4y")

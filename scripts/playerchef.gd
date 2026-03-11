@@ -17,8 +17,11 @@ var carrying_coffee_bean = false
 var carrying_milk = false
 var carrying_butter = false
 var carrying_croissant_dough = false
+var carrying_cut_croissant_dough = false
+var carrying_croissant = false
 @export var loading_bar1 : Node2D
 @export var loading_bar2 : Node2D
+@export var loading_bar3 : Node2D
 @export var oven_open = false
 @export var near_bowl = false
 @export var near_cutting_board = false
@@ -47,6 +50,17 @@ func get_input():
 	velocity = velocity.normalized() * speed
 
 func _physics_process(delta):
+	if oven_open and carrying_cut_croissant_dough:
+		$Label4.text = "Press E to bake Croissant Dough"
+		if Input.is_action_just_pressed("pickup"):
+			loading_bar1.animation_playing = true
+			print("Baking...") 
+			drop_items()
+			can_move = false
+			await $"../Loadingbar/AnimatedSprite2D".animation_finished
+			carrying_croissant = true
+			carrying_food = true
+			can_move = true
 	if carrying_coffee_bean:
 		$Label.text = "Carrying: Coffee Bean"
 	if $RayCast2D.is_colliding():
@@ -93,6 +107,8 @@ func _physics_process(delta):
 	if carrying_baguette_mix:
 		Global.bowl_items = []
 		$Label.text = "Carrying: Baguette Mix"
+	if carrying_croissant:
+		$Label.text = "Carrying: Croissant"
 	if near_bowl and Input.is_action_just_pressed("empty_bowl"):
 		Global.bowl_items = []
 	if near_bowl and !carrying_food:
@@ -143,8 +159,16 @@ func _physics_process(delta):
 		looking_at_food = false
 	
 	if near_cutting_board and carrying_croissant_dough:
-		print("near cutting board")
 		$Label4.text = "Press E to cut Croissant Dough"
+		if Input.is_action_just_pressed("pickup"):
+			loading_bar3.animation_playing = true
+			print("Cutting") 
+			drop_items()
+			can_move = false
+			await $"../Loadingbar3/AnimatedSprite2D".animation_finished
+			carrying_cut_croissant_dough = true
+			carrying_food = true
+			can_move = true
 	
 	if looking_at_cfm and carrying_water and Global.active_food == "coffee":
 		$Label4.text = "Put ingredient in Coffee Machine"
@@ -163,7 +187,7 @@ func _physics_process(delta):
 			drop_items()
 	if looking_at_food and !looking_at_cfm:
 		$Label4.text = "Press E to pick up"
-	if !looking_at_food and !near_bowl and !oven_open and !looking_at_cfm:
+	if !looking_at_food and !near_bowl and !oven_open and !looking_at_cfm and !near_cutting_board:
 		$Label4.text = ""
 	if !carrying_food:
 		$Label.text = "Carrying: Nothing"
@@ -231,21 +255,27 @@ func _physics_process(delta):
 		looking_at_food = false
 
 	if carrying_food and carrying_croissant_dough:
-		$Label.text = "Carrying: Croissant Dough"
+		$Label.text = "Carrying: Uncut Croissant Dough"
+	elif carrying_food and carrying_cut_croissant_dough:
+		$Label.text = "Carrying: Cut Croissant Dough"
 
 	if can_move:
 		if velocity.x > 0 or Input.is_action_pressed("right"):
 			$RayCast2D.rotation_degrees = -90
 			$AnimatedSprite2D.rotation_degrees = -90
+			$CollisionShape2D.rotation_degrees = -90
 		if velocity.x < 0 or Input.is_action_pressed("left"):
 			$RayCast2D.rotation_degrees = 90
 			$AnimatedSprite2D.rotation_degrees = 90
+			$CollisionShape2D.rotation_degrees = 90
 		if velocity.y > 0 or Input.is_action_pressed("down"):
 			$RayCast2D.rotation_degrees = 0
 			$AnimatedSprite2D.rotation_degrees = 0
+			$CollisionShape2D.rotation_degrees = 0
 		if velocity.y < 0 or Input.is_action_pressed("up"):
 			$RayCast2D.rotation_degrees = 180
 			$AnimatedSprite2D.rotation_degrees = 180
+			$CollisionShape2D.rotation_degrees = 180
 
 	
 	if Input.is_action_pressed("sprint"):
@@ -280,4 +310,6 @@ func drop_items():
 		carrying_milk = false
 		carrying_butter = false
 		carrying_croissant_dough = false
+		carrying_cut_croissant_dough = false
+		carrying_croissant = false
 		item_carried = ""

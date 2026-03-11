@@ -48,7 +48,7 @@ position = Vector2(-311, -135)
 position = Vector2(256, 679)
 
 [node name="coffee" parent="." unique_id=1548792351 instance=ExtResource("11_ya4ey")]
-position = Vector2(894, 36)
+position = Vector2(917, 210)
 
 [node name="coffee_machine" parent="." unique_id=1676423987 instance=ExtResource("10_choun")]
 position = Vector2(100.00001, 621)
@@ -63,18 +63,22 @@ position = Vector2(98.000015, 621)
 rotation = -1.5707964
 
 [node name="butter" parent="." unique_id=2040609979 instance=ExtResource("13_a8y0u")]
-position = Vector2(910, 107)
+position = Vector2(910, 89)
 
 [node name="milk" parent="." unique_id=198119891 instance=ExtResource("14_jkv2x")]
-position = Vector2(914, 176)
-
-[node name="CharacterBody2D" parent="." unique_id=1683270934 node_paths=PackedStringArray("loading_bar1", "loading_bar2") groups=["player"] instance=ExtResource("3_jyhfs")]
-position = Vector2(144, 121)
-loading_bar1 = NodePath("../Loadingbar")
-loading_bar2 = NodePath("../Loadingbar2")
+position = Vector2(914, 158)
 
 [node name="cutting_board" parent="." unique_id=1154817377 instance=ExtResource("15_jkv2x")]
 position = Vector2(533, 672)
+
+[node name="Loadingbar3" parent="." unique_id=322108636 instance=ExtResource("12_eb6dy")]
+position = Vector2(533, 672)
+
+[node name="CharacterBody2D" parent="." unique_id=1683270934 node_paths=PackedStringArray("loading_bar1", "loading_bar2", "loading_bar3") groups=["player"] instance=ExtResource("3_jyhfs")]
+position = Vector2(144, 121)
+loading_bar1 = NodePath("../Loadingbar")
+loading_bar2 = NodePath("../Loadingbar2")
+loading_bar3 = NodePath("../Loadingbar3")
 
 [editable path="Loadingbar"]
 [editable path="Loadingbar2"]

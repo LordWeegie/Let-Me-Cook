@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bsawa5d57bb4h" path="res://assets/food/crossiant/butter.png" id="1_68hcd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jepqy"]
-size = Vector2(14, 5)
+size = Vector2(14, 12.25)
 
 [node name="butter" type="StaticBody2D" unique_id=2040609979 groups=["butter"]]
 scale = Vector2(4, 4)
@@ -13,5 +13,5 @@ texture_filter = 1
 texture = ExtResource("1_68hcd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=606035058]
-position = Vector2(0, 5.5)
+position = Vector2(0, 1.875)
 shape = SubResource("RectangleShape2D_jepqy")

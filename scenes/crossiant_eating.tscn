@@ -3,9 +3,12 @@
 [ext_resource type="PackedScene" uid="uid://bko3h7uxk6ss6" path="res://scenes/croissant_tile.tscn" id="1_5bna3"]
 [ext_resource type="Script" uid="uid://cw1h4ptoec17v" path="res://scripts/crossiant_eating.gd" id="1_cs82u"]
 [ext_resource type="PackedScene" uid="uid://dhm5cd30k2f0p" path="res://scenes/customer.tscn" id="2_cs82u"]
+[ext_resource type="Texture2D" uid="uid://dxeju40s8v2h6" path="res://assets/tiles/croissant2.png" id="4_5x2x3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5bna3"]
 size = Vector2(595, 15)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wx5fj"]
 
 [node name="Node2D" type="Node2D" unique_id=1010147544]
 script = ExtResource("1_cs82u")
@@ -31,4 +34,22 @@ position = Vector2(-64, 2)
 position = Vector2(47.5, 56.5)
 shape = SubResource("RectangleShape2D_5bna3")
 
+[node name="CroissantTile2" parent="." unique_id=1122496686 instance=ExtResource("1_5bna3")]
+texture_filter = 1
+position = Vector2(102.99999, 26.000002)
+scale = Vector2(0.1, 0.1)
+layer_0/tile_data = PackedInt32Array(458758, 1, 11, 196627, 1, 11, -131041, 1, 11, -458735, 1, 11, -917502, 1, 11, -983016, 1, 11, -1245145, 1, 11, -1376203, 1, 11, -1376174, 1, 11, -1245194, 1, 11, -1638421, 1, 11, -2097183, 1, 11, -2293774, 1, 11, -2555903, 1, 11, -2949109, 1, 11, -3211267, 1, 11, -3735567, 1, 11, -4128771, 1, 11, -4259867, 1, 11, -4653095, 1, 11, -4653067, 1, 11, -5111829, 1, 11, -5439519, 1, 11, -4653105, 1, 11, -4653106, 1, 11, -4653107, 1, 11, -4653108, 1, 11, -4653109, 1, 11, -4653110, 1, 11, -4653111, 1, 11, -4653112, 1, 11, -4653113, 1, 11, -4653114, 1, 11, -4653115, 1, 11, -4653116, 1, 11, -4653117, 1, 11, -4653118, 1, 11, -4653119, 1, 11, -4653120, 1, 11)
+
+[node name="Area2D2" type="Area2D" parent="." unique_id=983948119]
+position = Vector2(3, -98)
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D2" unique_id=695711009]
+position = Vector2(0, -1.9999999)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("4_5x2x3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2" unique_id=1646565903]
+shape = SubResource("RectangleShape2D_wx5fj")
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Area2D2" to="." method="_on_area_2d_2_body_entered"]

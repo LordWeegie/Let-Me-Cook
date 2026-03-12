@@ -56,7 +56,7 @@ func _physics_process(delta):
 	$Label5.text = "Time till restart: " + str(int(timer.time_left))
 	if timer.is_stopped():
 		print("Starting timer")
-		timer.start(20)
+		timer.start(45)
 	if timer.time_left < 0.1:
 		print("!!!")
 		get_tree().reload_current_scene()

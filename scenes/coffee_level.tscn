@@ -19,6 +19,10 @@ glow_enabled = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j8iy6"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_17jqh"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_j8iy6"]
+
 [node name="coffee_level" type="Node3D" unique_id=1757119941]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1408383323]
@@ -38,4 +42,13 @@ mesh = SubResource("BoxMesh_xx74y")
 shape = SubResource("BoxShape3D_j8iy6")
 
 [node name="player" parent="." unique_id=1632048871 instance=ExtResource("1_17jqh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.31153464, 1.2632422, 1.4789255)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2117157, 1.292584, 1.26031)
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="." unique_id=699367089 groups=["enemy"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5868015, -2.6937876)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2" unique_id=410158907]
+shape = SubResource("BoxShape3D_17jqh")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D2" unique_id=832804852]
+mesh = SubResource("BoxMesh_j8iy6")

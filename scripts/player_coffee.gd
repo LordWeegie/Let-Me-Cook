@@ -10,20 +10,7 @@ var camera_anglev=0
 func _ready() -> void:
 	pass
 
-func _unhandled_input(event):
-	# Handle mouse movement
-	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
-		# Rotate the player body horizontally (Y-axis)
-		rotate_y(-event.relative.x * mouse_sens)
-		
-		# Optional: If you want vertical looking later,
-		# you would rotate the camera_pivot on X-axis here, 
-		# but for DOOM-style horizontal-only, this is all you need.
 
-	# Release mouse with ESC
-	if event.is_action_pressed("ui_cancel"):
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		
 func _input(event):
 	# Re-capture mouse if clicked back in
 	if event is InputEventMouseButton and Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
@@ -31,6 +18,15 @@ func _input(event):
 
 
 func _physics_process(delta: float) -> void:
+	if Input.is_action_just_pressed("shoot") and $AnimationPlayer.animation_finished:
+		$AnimationPlayer.play("shoot")
+		if $RayCast3D.is_colliding():
+			if $RayCast3D.get_collider().is_in_group("enemy"):
+				$RayCast3D.get_collider().queue_free()
+	
+	if Input.is_action_just_pressed("ui_cancel"):
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	_update_camera(delta)
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -51,3 +47,42 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
+	
+
+var _mouse_input : bool = false
+var _mouse_rotation : Vector3
+var _rotation_input : float
+var _tilt_input : float
+var _player_rotation : Vector3
+var _camera_rotation : Vector3
+
+
+func _unhandled_input(event):
+	_mouse_input = event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED
+	if _mouse_input :
+		_rotation_input = -event.relative.x * MOUSE_SENSITIVITY
+		_tilt_input = -event.relative.y * MOUSE_SENSITIVITY
+		print(Vector2(_rotation_input,_tilt_input))
+
+@export var TILT_LOWER_LIMIT := deg_to_rad(-90.0)
+@export var TILT_UPPER_LIMIT := deg_to_rad(90.0)
+@export var CAMERA_CONTROLLER : Camera3D
+@export var MOUSE_SENSITIVITY : float = 0.5 
+
+func _update_camera(delta):
+	
+	_mouse_rotation.y += _rotation_input * delta
+	
+	_player_rotation = Vector3(0.0,_mouse_rotation.y,0.0)
+	_camera_rotation = Vector3(_mouse_rotation.x,0.0,0.0)
+	
+	CAMERA_CONTROLLER.transform.basis = Basis.from_euler(_camera_rotation)
+	CAMERA_CONTROLLER.rotation.z = 0.0
+	
+	global_transform.basis = Basis.from_euler(_player_rotation)
+	
+	_rotation_input = 0.0
+	_tilt_input = 0.0
+	
+
+	

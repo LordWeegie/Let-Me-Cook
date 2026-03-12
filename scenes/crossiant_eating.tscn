@@ -18,7 +18,7 @@ offset_left = -363.0
 offset_top = -343.0
 offset_right = -299.8037
 offset_bottom = -303.0
-scale = Vector2(16.896711, 370.2509)
+scale = Vector2(46.512592, 68.033844)
 color = Color(0, 0, 0, 1)
 
 [node name="CroissantTile" parent="." unique_id=993946252 instance=ExtResource("1_5bna3")]

@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://b65bbjh0qmdeg"]
+
+[ext_resource type="PackedScene" uid="uid://dppwwc0st1xrx" path="res://assets/doom_level/thegun.fbx" id="1_fi1so"]
+[ext_resource type="Script" uid="uid://brqcett3tcg7n" path="res://scripts/player_coffee.gd" id="1_tfb7w"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0j8rm"]
+
+[node name="player" type="CharacterBody3D" unique_id=1632048871]
+script = ExtResource("1_tfb7w")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1594868072]
+shape = SubResource("CapsuleShape3D_0j8rm")
+
+[node name="thegun" parent="." unique_id=574224270 instance=ExtResource("1_fi1so")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.4280889, -0.6632423, -0.609488)
+
+[node name="Camera" type="Camera3D" parent="." unique_id=868295902]

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://n106gbxeyfi0"]
 
 [ext_resource type="PackedScene" uid="uid://b65bbjh0qmdeg" path="res://scenes/player_coffee.tscn" id="1_17jqh"]
+[ext_resource type="PackedScene" uid="uid://dlca642a8f3ed" path="res://scenes/enemy_coffee.tscn" id="2_xx74y"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_17jqh"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -36,13 +37,15 @@ shadow_enabled = true
 transform = Transform3D(7.447731, 0, 0, 0, 1, 0, 0, 0, 10.023965, 0, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=1178108395]
+transform = Transform3D(2.5709758, 0, 0, 0, 1, 0, 0, 0, 2.4860168, 0, 0, 0)
 mesh = SubResource("BoxMesh_xx74y")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1128422942]
+transform = Transform3D(4.226905, 0, 0, 0, 1, 0, 0, 0, 2.7834852, 0, 0, 0)
 shape = SubResource("BoxShape3D_j8iy6")
 
 [node name="player" parent="." unique_id=1632048871 instance=ExtResource("1_17jqh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2117157, 1.292584, 1.26031)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.33519, 1.292584, -7.123048)
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="." unique_id=699367089 groups=["enemy"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5868015, -2.6937876)
@@ -52,3 +55,18 @@ shape = SubResource("BoxShape3D_17jqh")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D2" unique_id=832804852]
 mesh = SubResource("BoxMesh_j8iy6")
+
+[node name="Node3D" parent="." unique_id=469270636 instance=ExtResource("2_xx74y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8148303, 1.1400009, -2.5047235)
+
+[node name="enemy" parent="." unique_id=742273710 instance=ExtResource("2_xx74y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.739242, 0, 2.4002905)
+
+[node name="enemy2" parent="." unique_id=1879217451 instance=ExtResource("2_xx74y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4697465, 1.14, 4.7720146)
+
+[node name="enemy3" parent="." unique_id=922918585 instance=ExtResource("2_xx74y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8378892, 1.14, 4.306687)
+
+[node name="enemy4" parent="." unique_id=650878983 instance=ExtResource("2_xx74y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.51975536, 0, 5.894468)

@@ -18,11 +18,12 @@ func _input(event):
 
 
 func _physics_process(delta: float) -> void:
-	if Input.is_action_just_pressed("shoot") and $AnimationPlayer.animation_finished:
-		$AnimationPlayer.play("shoot")
-		if $RayCast3D.is_colliding():
-			if $RayCast3D.get_collider().is_in_group("enemy"):
-				$RayCast3D.get_collider().queue_free()
+	if Input.is_action_just_pressed("shoot"):
+		if !$AnimationPlayer.is_playing():
+			$AnimationPlayer.play("shoot")
+			if $RayCast3D.is_colliding():
+				if $RayCast3D.get_collider().is_in_group("enemy"):
+					$RayCast3D.get_collider().queue_free()
 	
 	if Input.is_action_just_pressed("ui_cancel"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)

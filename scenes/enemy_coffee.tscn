@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://dlca642a8f3ed"]
+
+[ext_resource type="Texture2D" uid="uid://dalk4nfe5kjuq" path="res://assets/food/coffee/coffee_man.png" id="1_2or5l"]
+[ext_resource type="Script" uid="uid://dnsld8bccl6ek" path="res://scripts/enemy_coffee.gd" id="1_3iy1b"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3iy1b"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2or5l"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3iy1b"]
+size = Vector3(4.0289307, 1, 7.2989807)
+
+[node name="enemy" type="CharacterBody3D" unique_id=742273710 groups=["enemy"]]
+script = ExtResource("1_3iy1b")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=928813310 groups=["enemy"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.33041978, 0)
+shape = SubResource("CapsuleShape3D_3iy1b")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=638742254]
+billboard = 1
+texture = ExtResource("1_2or5l")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1720901444]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=2116124111]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+shape = SubResource("BoxShape3D_2or5l")
+
+[node name="Area3D2" type="Area3D" parent="." unique_id=210609948]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.8537025)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D2" unique_id=1787449695]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07635498, 0, 1.4420714)
+shape = SubResource("BoxShape3D_3iy1b")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="Area3D2" to="." method="_on_area_3d_2_body_entered"]

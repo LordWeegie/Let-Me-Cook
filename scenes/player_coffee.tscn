@@ -66,12 +66,12 @@ _data = {
 &"shoot": SubResource("Animation_tfb7w")
 }
 
-[node name="player" type="CharacterBody3D" unique_id=1632048871 node_paths=PackedStringArray("CAMERA_CONTROLLER")]
+[node name="player" type="CharacterBody3D" unique_id=1632048871 node_paths=PackedStringArray("CAMERA_CONTROLLER") groups=["player"]]
 script = ExtResource("1_tfb7w")
 CAMERA_CONTROLLER = NodePath("Camera")
 
 [node name="RayCast3D" type="RayCast3D" parent="." unique_id=1223019968]
-target_position = Vector3(0, 0, -10)
+target_position = Vector3(0, 0, -5)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1594868072]
 shape = SubResource("CapsuleShape3D_0j8rm")

@@ -32,6 +32,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("shoot"):
 		if !$AnimationPlayer.is_playing():
 			$AnimationPlayer.play("shoot")
+			$AudioStreamPlayer.play()
 			if $RayCast3D.is_colliding():
 				if $RayCast3D.get_collider().is_in_group("enemy"):
 					kills += 1

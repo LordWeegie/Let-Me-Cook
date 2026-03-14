@@ -32,6 +32,7 @@ var can_move = true
 var item_carried
 
 func _ready() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	$Label.text = "Carrying: Nothing"
 	$Label2.text = "Active Recipe: " + Global.active_food.capitalize()
 	$Label5.add_theme_constant_override("shadow_outline_size", 20)

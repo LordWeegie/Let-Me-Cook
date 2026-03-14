@@ -53,9 +53,6 @@ func get_input():
 	velocity = velocity.normalized() * speed
 
 func _physics_process(delta):
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	if Input.is_action_just_pressed("ui_cancel"):
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	$Label5.text = "Time till restart: " + str(int(timer.time_left))
 	if timer.is_stopped():
 		print("Starting timer")
@@ -335,3 +332,11 @@ func drop_items():
 		carrying_cut_croissant_dough = false
 		carrying_croissant = false
 		item_carried = ""
+
+
+func _on_button_2_pressed() -> void:
+	$Sprite2D.visible = true
+
+
+func _on_button_pressed() -> void:
+	$Sprite2D.visible = false

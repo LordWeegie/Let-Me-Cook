@@ -188,22 +188,25 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1883612811]
-visible = false
-position = Vector2(4.5776367e-05, -3.9999695)
-scale = Vector2(1.6770538, 1.5403725)
-texture = ExtResource("19_mx0qq")
-
 [node name="Button" type="Button" parent="." unique_id=149864406]
-offset_left = -734.0
-offset_top = 4.0
-offset_right = -624.0
-offset_bottom = 110.0
+offset_left = -898.0
+offset_top = 22.0
+offset_right = -788.0
+offset_bottom = 128.0
 flat = true
 
 [node name="Button2" type="Button" parent="." unique_id=355362586]
 offset_left = -890.0
 offset_top = -498.0
-offset_right = -761.0
-offset_bottom = -467.0
+offset_right = -642.0
+offset_bottom = -380.0
 text = "Show inventory"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1883612811]
+visible = false
+position = Vector2(4.5776367e-05, -3.9999695)
+scale = Vector2(2.1, 1.929)
+texture = ExtResource("19_mx0qq")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]

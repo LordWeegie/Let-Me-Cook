@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://c0s7lqude8wpk" path="res://assets/chefman/walk/frame0014.png" id="16_pdped"]
 [ext_resource type="Texture2D" uid="uid://b33ei0cv5bsha" path="res://assets/chefman/walk/frame0015.png" id="17_prn4k"]
 [ext_resource type="Texture2D" uid="uid://bvv4wkovh1o5m" path="res://assets/chefman/walk/frame0016.png" id="18_gowkl"]
+[ext_resource type="Texture2D" uid="uid://bx8qb5g3ya7ej" path="res://assets/things/tutorial.png" id="19_mx0qq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
 size = Vector2(112, 90)
@@ -186,3 +187,23 @@ theme_type_variation = &"HeaderLarge"
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1883612811]
+visible = false
+position = Vector2(4.5776367e-05, -3.9999695)
+scale = Vector2(1.6770538, 1.5403725)
+texture = ExtResource("19_mx0qq")
+
+[node name="Button" type="Button" parent="." unique_id=149864406]
+offset_left = -734.0
+offset_top = 4.0
+offset_right = -624.0
+offset_bottom = 110.0
+flat = true
+
+[node name="Button2" type="Button" parent="." unique_id=355362586]
+offset_left = -890.0
+offset_top = -498.0
+offset_right = -761.0
+offset_bottom = -467.0
+text = "Show inventory"

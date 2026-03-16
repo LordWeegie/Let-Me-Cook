@@ -68,3 +68,12 @@ offset_top = -39.999996
 offset_right = 94.666664
 offset_bottom = -16.999996
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+
+[node name="Timer" type="Timer" parent="." unique_id=1375189140]
+
+[node name="Label2" type="Label" parent="." unique_id=1305673036]
+offset_left = -78.33333
+offset_top = -68.33333
+offset_right = 94.66667
+offset_bottom = -45.33333
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)

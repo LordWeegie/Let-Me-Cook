@@ -5,9 +5,17 @@ const SPEED = 100.0
 const JUMP_VELOCITY = -250.0
 var ray_collider
 @export var fly = false
+@onready var timer = $Timer
+
+func _ready() -> void:
+	print("Started")
+	timer.start(30.0)
 
 
 func _physics_process(delta: float) -> void:
+	$Label2.text = "Time Left: %.2f" % timer.time_left
+	if timer.time_left < 0.1:
+		get_tree().reload_current_scene()
 	if fly:
 		velocity.y -= 1500
 	if ray_collider == null:

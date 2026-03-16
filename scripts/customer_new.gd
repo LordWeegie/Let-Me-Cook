@@ -1,11 +1,23 @@
 extends CharacterBody2D
 
 
-const SPEED = 50.0
-const JUMP_VELOCITY = -150.0
-
+const SPEED = 100.0
+const JUMP_VELOCITY = -250.0
+var ray_collider
 
 func _physics_process(delta: float) -> void:
+	if ray_collider == null:
+		$Label.text = ""
+	ray_collider = $RayCastContainer/RayCast2D.get_collider()
+	if ray_collider != null:
+		if $RayCastContainer/RayCast2D.is_colliding() and $RayCastContainer/RayCast2D.get_collider().is_in_group("breakable"):
+			$Label.text = "Press E to mine bread!"
+			if Input.is_action_just_pressed("pickup"):
+				print("Hello mate")
+				print(ray_collider)
+				ray_collider.queue_free()
+		else:
+			$Label.text = ""
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta

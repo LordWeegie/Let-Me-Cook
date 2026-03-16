@@ -1,22 +1,44 @@
 [gd_scene format=3 uid="uid://dvtyutaikgnxq"]
 
 [ext_resource type="PackedScene" uid="uid://dknci3vmm4562" path="res://scenes/customer_new.tscn" id="2_tkg31"]
+[ext_resource type="Texture2D" uid="uid://jpcnv0kwy6ea" path="res://assets/tiles/baguette_tile.png" id="2_uuivr"]
+[ext_resource type="PackedScene" uid="uid://c7yvnrngvpstp" path="res://scenes/breakable_tile.tscn" id="3_uuivr"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tkg31"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_887nw"]
+texture = ExtResource("2_uuivr")
+0:0/size_in_atlas = Vector2i(2, 2)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16.136738, 15.891411, 15.582954, 16.5924, 16.283943, -15.653036, -15.610996, -16.178776)
+2:0/size_in_atlas = Vector2i(2, 2)
+2:0/0 = 0
 
-[sub_resource type="BoxMesh" id="BoxMesh_uuivr"]
+[sub_resource type="TileSet" id="TileSet_k0mbf"]
+physics_layer_0/collision_layer = 1
+sources/1 = SubResource("TileSetAtlasSource_887nw")
 
 [node name="Node2D" type="Node2D" unique_id=1646172264]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=2110320058]
-scale = Vector2(15.239997, 1)
+[node name="TileMap" type="TileMap" parent="." unique_id=698860124]
+tile_set = SubResource("TileSet_k0mbf")
+format = 2
+layer_0/tile_data = PackedInt32Array(65528, 1, 0, 65529, 1, 0, 65530, 1, 0, 65531, 1, 0, 65532, 1, 0, 65533, 1, 0, -2, 1, 0, -1, 1, 0, -65537, 1, 0, -131072, 1, 0, -196608, 1, 0, -196607, 1, 0, -196606, 1, 0, -196605, 1, 0, -196604, 1, 0, -196603, 1, 0, -458752, 1, 0, -458751, 1, 0, -458750, 1, 0, -458749, 1, 0, -458748, 1, 0)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1428967314]
-shape = SubResource("RectangleShape2D_tkg31")
+[node name="breakable_tile" parent="." unique_id=38285616 instance=ExtResource("3_uuivr")]
+position = Vector2(8, -72)
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D" unique_id=330108995]
-scale = Vector2(19.872547, 20.274818)
-mesh = SubResource("BoxMesh_uuivr")
+[node name="breakable_tile2" parent="." unique_id=465123673 instance=ExtResource("3_uuivr")]
+position = Vector2(40, -72)
 
-[node name="CharacterBody2D2" parent="." unique_id=9558940 instance=ExtResource("2_tkg31")]
+[node name="breakable_tile3" parent="." unique_id=725677331 instance=ExtResource("3_uuivr")]
+position = Vector2(72, -72)
+
+[node name="Label" type="Label" parent="." unique_id=1058811121]
+offset_left = -165.0
+offset_top = -69.0
+offset_right = 221.0
+offset_bottom = -46.0
+scale = Vector2(0.3699292, 0.6381897)
+text = "Press E or Enter to mine the lighter colored bread!"
+
+[node name="customer" parent="." unique_id=9558940 instance=ExtResource("2_tkg31")]
 position = Vector2(-107, -30)

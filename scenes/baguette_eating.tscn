@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dvtyutaikgnxq"]
 
-[ext_resource type="PackedScene" uid="uid://dhm5cd30k2f0p" path="res://scenes/customer.tscn" id="1_kdvf8"]
+[ext_resource type="PackedScene" uid="uid://dknci3vmm4562" path="res://scenes/customer_new.tscn" id="2_tkg31"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tkg31"]
 
@@ -18,5 +18,5 @@ shape = SubResource("RectangleShape2D_tkg31")
 scale = Vector2(19.872547, 20.274818)
 mesh = SubResource("BoxMesh_uuivr")
 
-[node name="CharacterBody2D" parent="." unique_id=1537751614 instance=ExtResource("1_kdvf8")]
-position = Vector2(-89, -43)
+[node name="CharacterBody2D2" parent="." unique_id=9558940 instance=ExtResource("2_tkg31")]
+position = Vector2(-107, -30)

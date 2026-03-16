@@ -4,8 +4,12 @@ extends CharacterBody2D
 const SPEED = 100.0
 const JUMP_VELOCITY = -250.0
 var ray_collider
+@export var fly = false
+
 
 func _physics_process(delta: float) -> void:
+	if fly:
+		velocity.y -= 1500
 	if ray_collider == null:
 		$Label.text = ""
 	ray_collider = $RayCastContainer/RayCast2D.get_collider()

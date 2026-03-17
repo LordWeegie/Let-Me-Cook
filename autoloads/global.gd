@@ -15,6 +15,12 @@ var coffee_recipe : String = "Recipe: \n1: Put Coffee Packet and Water in Coffee
 var croissant_recipe : String = "Recipe: \n1: Mix Milk, Butter, Yeast, Salt, and Wheat in bowl \n2:Cut on chopping board \n3: Bake in oven \n4: Take to delivery point" 
 
 func _ready() -> void:
+	_reset_food()
 	print(random_food)
+	print(active_food)
+
+func _reset_food():
+	random_food = randi_range(0, 2)
 	active_food = foods[random_food]
+	print(random_food)
 	print(active_food)

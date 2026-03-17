@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://3qkv6p3pe1md"]
+
+[ext_resource type="Texture2D" uid="uid://dm3c74y5u86j" path="res://assets/things/478234D9-48F2-45A2-AA9A-FD84EEE35D9C.jpeg" id="1_fgkus"]
+[ext_resource type="Script" uid="uid://udg2uiprtuc1" path="res://scripts/title_screen.gd" id="1_sa3yf"]
+
+[node name="Control" type="Control" unique_id=1047549883]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sa3yf")
+
+[node name="478234d948f245a2Aa9aFd84eee35d9c" type="Sprite2D" parent="." unique_id=719712211]
+position = Vector2(576, 322.5)
+scale = Vector2(1.9166667, 1.306)
+texture = ExtResource("1_fgkus")
+
+[node name="Button" type="Button" parent="." unique_id=1470536707]
+layout_mode = 0
+offset_left = 571.0
+offset_top = 312.0
+offset_right = 667.0
+offset_bottom = 343.0
+text = "Start Game"
+
+[node name="Button2" type="Button" parent="." unique_id=706810441]
+layout_mode = 0
+offset_left = 571.0
+offset_top = 399.0
+offset_right = 667.0
+offset_bottom = 430.0
+text = "Quit Game"
+
+[node name="Button3" type="Button" parent="." unique_id=1001012316]
+layout_mode = 0
+offset_left = 517.0
+offset_top = 432.0
+offset_right = 707.0
+offset_bottom = 463.0
+text = "Create New Active Food"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Button3" to="." method="_on_button_3_pressed"]

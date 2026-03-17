@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://c7yvnrngvpstp"]
+
+[ext_resource type="Texture2D" uid="uid://dke62odttou2y" path="res://assets/tiles/breakable_tile_baguette.png" id="1_2qbxc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3tu1s"]
+size = Vector2(32, 30)
+
+[node name="breakable_tile" type="StaticBody2D" unique_id=38285616 groups=["breakable"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=290033966]
+shape = SubResource("RectangleShape2D_3tu1s")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=570008044]
+texture = ExtResource("1_2qbxc")

@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://dknci3vmm4562"]
+
+[ext_resource type="Script" uid="uid://bbfyyhy2owiij" path="res://scripts/customer_new.gd" id="1_f1n31"]
+[ext_resource type="Texture2D" uid="uid://dgtmo2cm827d0" path="res://assets/french_dude_2/Untitled_Artwork-1.png" id="4_ry3s8"]
+[ext_resource type="Texture2D" uid="uid://wpq8e4untpex" path="res://assets/french_dude_2/Untitled_Artwork-2.png" id="5_rp7ie"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rjbu2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_ry3s8")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_ry3s8")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_ry3s8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_rp7ie")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8qg4y"]
+size = Vector2(23.333334, 43.333332)
+
+[node name="player" type="CharacterBody2D" unique_id=1537751614]
+scale = Vector2(0.6, 0.6)
+script = ExtResource("1_f1n31")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=599205887 groups=["player"]]
+zoom = Vector2(5, 5)
+position_smoothing_enabled = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=418275128]
+texture_filter = 1
+scale = Vector2(0.05, 0.05)
+sprite_frames = SubResource("SpriteFrames_rjbu2")
+animation = &"walk"
+frame_progress = 0.87743294
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1628297055 groups=["player"]]
+position = Vector2(-5.0000005, 8.333334)
+shape = SubResource("RectangleShape2D_8qg4y")
+
+[node name="RayCastContainer" type="Node2D" parent="." unique_id=1532250665]
+position = Vector2(-3.3333333, 10)
+
+[node name="RayCast2D" type="RayCast2D" parent="RayCastContainer" unique_id=727109371]
+target_position = Vector2(30, 0)
+
+[node name="Label" type="Label" parent="." unique_id=180571422]
+offset_left = -78.333336
+offset_top = -39.999996
+offset_right = 94.666664
+offset_bottom = -16.999996
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+
+[node name="Timer" type="Timer" parent="." unique_id=1375189140]
+
+[node name="Label2" type="Label" parent="." unique_id=1305673036]
+offset_left = -78.33333
+offset_top = -68.33333
+offset_right = 94.66667
+offset_bottom = -45.33333
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)

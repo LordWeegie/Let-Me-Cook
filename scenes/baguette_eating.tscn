@@ -1,22 +1,152 @@
 [gd_scene format=3 uid="uid://dvtyutaikgnxq"]
 
-[ext_resource type="PackedScene" uid="uid://dhm5cd30k2f0p" path="res://scenes/customer.tscn" id="1_kdvf8"]
+[ext_resource type="Script" uid="uid://bsa2b0qif5heb" path="res://scripts/boom.gd" id="1_887nw"]
+[ext_resource type="PackedScene" uid="uid://dknci3vmm4562" path="res://scenes/customer_new.tscn" id="2_tkg31"]
+[ext_resource type="Texture2D" uid="uid://jpcnv0kwy6ea" path="res://assets/tiles/baguette_tile.png" id="2_uuivr"]
+[ext_resource type="PackedScene" uid="uid://c7yvnrngvpstp" path="res://scenes/breakable_tile.tscn" id="3_uuivr"]
+[ext_resource type="Texture2D" uid="uid://df10jhet2nxr5" path="res://assets/tiles/arrow.png" id="5_k0mbf"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tkg31"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_887nw"]
+texture = ExtResource("2_uuivr")
+0:0/size_in_atlas = Vector2i(2, 2)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16.136738, 15.891411, 15.993753, 16.18764, 16.195559, -15.942333, -16.061028, -16.029373)
+2:0/size_in_atlas = Vector2i(2, 2)
+2:0/0 = 0
 
-[sub_resource type="BoxMesh" id="BoxMesh_uuivr"]
+[sub_resource type="TileSet" id="TileSet_k0mbf"]
+physics_layer_0/collision_layer = 1
+sources/1 = SubResource("TileSetAtlasSource_887nw")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k0mbf"]
+size = Vector2(876, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_887nw"]
+size = Vector2(61, 97)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_igekw"]
+size = Vector2(202, 418)
 
 [node name="Node2D" type="Node2D" unique_id=1646172264]
+script = ExtResource("1_887nw")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=2110320058]
-scale = Vector2(15.239997, 1)
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1976219198]
+offset_left = -636.00006
+offset_top = -1044.0
+offset_right = -592.9377
+offset_bottom = -957.3884
+scale = Vector2(51.2512, 15.103541)
+color = Color(0.37120688, 0.15562543, 0.06855974, 1)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1428967314]
-shape = SubResource("RectangleShape2D_tkg31")
+[node name="TileMap" type="TileMap" parent="." unique_id=698860124]
+tile_set = SubResource("TileSet_k0mbf")
+format = 2
+layer_0/tile_data = PackedInt32Array(65528, 1, 0, 65529, 1, 0, 65530, 1, 0, 65531, 1, 0, 65532, 1, 0, 65533, 1, 0, -2, 1, 0, -1, 1, 0, -65537, 1, 0, -131072, 1, 0, -458752, 1, 0, -458751, 1, 0, -458750, 1, 0, -458749, 1, 0, -458748, 1, 0, 65526, 1, 0, -10, 1, 0, -65546, 1, 0, -131082, 1, 0, -196618, 1, 0, -262154, 1, 0, -327690, 1, 0, -393226, 1, 0, -393224, 1, 0, -393223, 1, 0, -393222, 1, 0, -393221, 1, 0, -393220, 1, 0, -393219, 1, 0, -393218, 1, 0, -327671, 1, 0, -458741, 1, 0, -131070, 1, 0, -131068, 1, 0, -131066, 1, 0, -131064, 1, 0, -196599, 1, 0, -262137, 1, 0, -589820, 1, 0, -720890, 1, 0, -720888, 1, 0, -720887, 1, 0, -720885, 1, 0, -720883, 1, 0, -720881, 1, 0, -720879, 1, 0, -327667, 1, 0, -196593, 1, 0, -65519, 1, 0, -65515, 1, 0, -131048, 1, 0, -131044, 1, 0, -131042, 1, 0, -131040, 1, 0, -131038, 1, 0, -262108, 1, 0, -393178, 1, 0, -524248, 1, 0, -131036, 1, 0, -262106, 1, 0, -131034, 1, 0, -393176, 1, 0, -262104, 1, 0, -131032, 1, 0, -131030, 1, 0, -262102, 1, 0, -393174, 1, 0, -524246, 1, 0, -524242, 1, 0, -524240, 1, 0, -524238, 1, 0, -524236, 1, 0, -524234, 1, 0, -655306, 1, 0, -655304, 1, 0, -655302, 1, 0, -786372, 1, 0, -655300, 1, 0, -786368, 1, 0, -917437, 1, 0, -786360, 1, 0, -786353, 1, 0, -851889, 1, 0, -917425, 1, 0, -982961, 1, 0, -1048497, 1, 0, -1114033, 1, 0, -1179569, 1, 0, -1245105, 1, 0, -1310641, 1, 0, -1376177, 1, 0, -1441713, 1, 0, -1507249, 1, 0, -1572785, 1, 0, -1638321, 1, 0, -1703857, 1, 0, -1769393, 1, 0, -1834929, 1, 0, -1900465, 1, 0, -1966001, 1, 0, -2031537, 1, 0, -2097073, 1, 0, -2162609, 1, 0, -2228145, 1, 0, -2293681, 1, 0, -2359217, 1, 0, -2424753, 1, 0, -2490289, 1, 0, -2555825, 1, 0, -2621361, 1, 0, -786356, 1, 0, -786355, 1, 0, -917435, 1, 0, -917433, 1, 0, -917431, 1, 0, -786358, 1, 0, -1310653, 1, 0, -1310652, 1, 0, -1310650, 1, 0, -1310649, 1, 0, -1310648, 1, 0, -1441720, 1, 0, -1507256, 1, 0, -1572792, 1, 0, -1638328, 1, 0, -1703864, 1, 0, -1769400, 1, 0, -1834936, 1, 0, -1900472, 1, 0, -1966008, 1, 0, -2031544, 1, 0, -2097080, 1, 0, -2162616, 1, 0, -2228152, 1, 0, -2293688, 1, 0, -2359224, 1, 0, -2424760, 1, 0, -2490296, 1, 0, -2555832, 1, 0, -2621368, 1, 0, -917450, 1, 0, -917448, 1, 0, -1179586, 1, 0, -1310656, 1, 0, -1310655, 1, 0)
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D" unique_id=330108995]
-scale = Vector2(19.872547, 20.274818)
-mesh = SubResource("BoxMesh_uuivr")
+[node name="breakable_tile" parent="." unique_id=38285616 instance=ExtResource("3_uuivr")]
+position = Vector2(9, -56)
 
-[node name="CharacterBody2D" parent="." unique_id=1537751614 instance=ExtResource("1_kdvf8")]
-position = Vector2(-89, -43)
+[node name="breakable_tile2" parent="." unique_id=465123673 instance=ExtResource("3_uuivr")]
+position = Vector2(41, -56)
+
+[node name="breakable_tile3" parent="." unique_id=725677331 instance=ExtResource("3_uuivr")]
+position = Vector2(73, -56)
+
+[node name="Label" type="Label" parent="." unique_id=1058811121]
+offset_left = -146.00002
+offset_top = -66.00001
+offset_right = 239.99998
+offset_bottom = -43.000008
+scale = Vector2(0.3699292, 0.6381897)
+text = "Press E or Enter to mine the lighter colored bread!"
+
+[node name="breakable_tile4" parent="." unique_id=702123971 instance=ExtResource("3_uuivr")]
+position = Vector2(152, -104)
+
+[node name="breakable_tile5" parent="." unique_id=1113184386 instance=ExtResource("3_uuivr")]
+position = Vector2(184, -136)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=226964375]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1607960074]
+position = Vector2(68, 107)
+shape = SubResource("RectangleShape2D_k0mbf")
+
+[node name="breakable_tile6" parent="." unique_id=1575625926 instance=ExtResource("3_uuivr")]
+position = Vector2(456, -71)
+scale = Vector2(1, 1.9600003)
+
+[node name="breakable_tile7" parent="." unique_id=1724306608 instance=ExtResource("3_uuivr")]
+position = Vector2(683, -169)
+scale = Vector2(1, 2.0799975)
+
+[node name="breakable_tile8" parent="." unique_id=285647959 instance=ExtResource("3_uuivr")]
+position = Vector2(715, -169)
+scale = Vector2(1, 2.0799975)
+
+[node name="breakable_tile9" parent="." unique_id=2023205418 instance=ExtResource("3_uuivr")]
+position = Vector2(747, -169)
+scale = Vector2(1, 2.0799975)
+
+[node name="Label2" type="Label" parent="." unique_id=1830823109]
+offset_left = 272.0
+offset_top = -95.0
+offset_right = 482.0
+offset_bottom = -72.0
+text = "You need to mine that fast!"
+
+[node name="breakable_tile10" parent="." unique_id=794716729 instance=ExtResource("3_uuivr")]
+position = Vector2(840, -152)
+
+[node name="breakable_tile11" parent="." unique_id=984628236 instance=ExtResource("3_uuivr")]
+position = Vector2(872, -184)
+
+[node name="breakable_tile12" parent="." unique_id=546941048 instance=ExtResource("3_uuivr")]
+position = Vector2(904, -184)
+
+[node name="breakable_tile13" parent="." unique_id=994701131 instance=ExtResource("3_uuivr")]
+position = Vector2(936, -184)
+
+[node name="breakable_tile14" parent="." unique_id=1480768607 instance=ExtResource("3_uuivr")]
+position = Vector2(1112, -248)
+
+[node name="breakable_tile15" parent="." unique_id=576591477 instance=ExtResource("3_uuivr")]
+position = Vector2(1144, -248)
+
+[node name="breakable_tile16" parent="." unique_id=335877728 instance=ExtResource("3_uuivr")]
+position = Vector2(1112, -280)
+
+[node name="breakable_tile17" parent="." unique_id=1891955352 instance=ExtResource("3_uuivr")]
+position = Vector2(1144, -280)
+
+[node name="breakable_tile18" parent="." unique_id=141773883 instance=ExtResource("3_uuivr")]
+position = Vector2(1176, -280)
+
+[node name="breakable_tile19" parent="." unique_id=1297953754 instance=ExtResource("3_uuivr")]
+position = Vector2(1176, -248)
+
+[node name="customer" parent="." unique_id=9558940 groups=["player"] instance=ExtResource("2_tkg31")]
+position = Vector2(-88, -40)
+
+[node name="Area2D2" type="Area2D" parent="." unique_id=886609257]
+position = Vector2(1218, -246)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2" unique_id=248138995]
+position = Vector2(6.5, -3.5)
+shape = SubResource("RectangleShape2D_887nw")
+
+[node name="Area2D3" type="Area2D" parent="." unique_id=1655793697]
+position = Vector2(1123, -701)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D3" unique_id=1525546084]
+position = Vector2(91, -155)
+shape = SubResource("RectangleShape2D_igekw")
+
+[node name="Arrow" type="Sprite2D" parent="." unique_id=1605587863]
+texture_filter = 1
+position = Vector2(1216, -247)
+texture = ExtResource("5_k0mbf")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Area2D2" to="." method="_on_area_2d_2_body_entered"]
+[connection signal="body_entered" from="Area2D3" to="." method="_on_area_2d_3_body_entered"]

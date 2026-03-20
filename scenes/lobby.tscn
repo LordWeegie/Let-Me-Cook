@@ -94,7 +94,7 @@ scale = Vector2(2, 3)
 position = Vector2(353, 302)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D11" unique_id=1386597704]
-position = Vector2(21.5, 14)
+position = Vector2(18.37619, 13.876221)
 shape = SubResource("RectangleShape2D_pc087")
 
 [node name="Area2D8" type="Area2D" parent="." unique_id=388110339 groups=["table_area"]]
@@ -113,7 +113,7 @@ scale = Vector2(0.6, 0.6)
 position = Vector2(335, 26)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1623733062]
-position = Vector2(21.5, 14)
+position = Vector2(21, 11)
 shape = SubResource("RectangleShape2D_pc087")
 
 [node name="Area2D2" type="Area2D" parent="." unique_id=1842888117 groups=["table_area"]]
@@ -134,21 +134,21 @@ shape = SubResource("RectangleShape2D_pc087")
 position = Vector2(578, 25)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D4" unique_id=1802420977]
-position = Vector2(21.5, 14)
+position = Vector2(21, 12)
 shape = SubResource("RectangleShape2D_pc087")
 
 [node name="Area2D5" type="Area2D" parent="." unique_id=1037299117 groups=["table_area"]]
 position = Vector2(655, 25)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D5" unique_id=1047868057]
-position = Vector2(21.5, 14)
+position = Vector2(22, 11)
 shape = SubResource("RectangleShape2D_pc087")
 
 [node name="Area2D6" type="Area2D" parent="." unique_id=1272465909 groups=["table_area"]]
 position = Vector2(202, 81)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D6" unique_id=2100521508]
-position = Vector2(21.5, 14)
+position = Vector2(24, 14)
 shape = SubResource("RectangleShape2D_pc087")
 
 [node name="Area2D7" type="Area2D" parent="." unique_id=2072419218 groups=["table_area"]]
@@ -162,49 +162,49 @@ shape = SubResource("RectangleShape2D_pc087")
 position = Vector2(353, 363)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D12" unique_id=1608340715]
-position = Vector2(21.5, 14)
+position = Vector2(15.37619, 14.876221)
 shape = SubResource("RectangleShape2D_pc087")
 
 [node name="Area2D13" type="Area2D" parent="." unique_id=1725554669 groups=["table_area"]]
 position = Vector2(497, 298)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D13" unique_id=817272049]
-position = Vector2(21.5, 14)
+position = Vector2(23.848572, 14.348572)
 shape = SubResource("RectangleShape2D_pc087")
 
 [node name="Area2D14" type="Area2D" parent="." unique_id=1730842995 groups=["table_area"]]
 position = Vector2(494, 364)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D14" unique_id=1176633706]
-position = Vector2(21.5, 14)
+position = Vector2(25.848572, 14.348572)
 shape = SubResource("RectangleShape2D_pc087")
 
 [node name="Area2D15" type="Area2D" parent="." unique_id=1729671676 groups=["table_area"]]
 position = Vector2(261, 301)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D15" unique_id=1244948550]
-position = Vector2(21.5, 14)
+position = Vector2(27, 15)
 shape = SubResource("RectangleShape2D_pc087")
 
 [node name="Area2D16" type="Area2D" parent="." unique_id=407786715 groups=["table_area"]]
 position = Vector2(262, 366)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D16" unique_id=1680304905]
-position = Vector2(21.5, 14)
+position = Vector2(27, 14)
 shape = SubResource("RectangleShape2D_pc087")
 
 [node name="Area2D17" type="Area2D" parent="." unique_id=273643824 groups=["table_area"]]
 position = Vector2(119, 307)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D17" unique_id=2061918413]
-position = Vector2(21.5, 14)
+position = Vector2(15, 14)
 shape = SubResource("RectangleShape2D_pc087")
 
 [node name="Area2D18" type="Area2D" parent="." unique_id=1917413025 groups=["table_area"]]
 position = Vector2(119, 367)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D18" unique_id=1284712615]
-position = Vector2(21.5, 14)
+position = Vector2(15, 13)
 shape = SubResource("RectangleShape2D_pc087")
 
 [node name="Area2D19" type="Area2D" parent="." unique_id=251391631 groups=["table_area"]]
@@ -218,21 +218,21 @@ shape = SubResource("RectangleShape2D_pc087")
 position = Vector2(577, 360)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D20" unique_id=1954604191]
-position = Vector2(21.5, 14)
+position = Vector2(15.419983, 15.919983)
 shape = SubResource("RectangleShape2D_pc087")
 
 [node name="Area2D21" type="Area2D" parent="." unique_id=1016935070 groups=["table_area"]]
 position = Vector2(719, 300)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D21" unique_id=1449170308]
-position = Vector2(21.5, 14)
+position = Vector2(23.848572, 14.348572)
 shape = SubResource("RectangleShape2D_pc087")
 
 [node name="Area2D22" type="Area2D" parent="." unique_id=1867201350 groups=["table_area"]]
 position = Vector2(719, 365)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D22" unique_id=26189944]
-position = Vector2(21.5, 14)
+position = Vector2(25.848633, 14.348572)
 shape = SubResource("RectangleShape2D_pc087")
 
 [node name="Sprite2D" parent="." unique_id=1987403344 instance=ExtResource("7_omrgh")]
@@ -421,32 +421,32 @@ scale = Vector2(0.08, 0.08)
 texture = ExtResource("8_ncsg4")
 
 [node name="CustomerLol11" type="Sprite2D" parent="." unique_id=926854189]
-position = Vector2(514, 388)
+position = Vector2(518.3486, 388.34857)
 rotation = 4.742492
 scale = Vector2(0.08, 0.08)
 texture = ExtResource("8_ncsg4")
 
 [node name="CustomerLol12" type="Sprite2D" parent="." unique_id=729945166]
-position = Vector2(509, 318)
+position = Vector2(511.34857, 318.34857)
 rotation = 4.742492
 scale = Vector2(0.08, 0.08)
 texture = ExtResource("8_ncsg4")
 
 [node name="CustomerLol13" type="Sprite2D" parent="." unique_id=1984834331]
-position = Vector2(738, 316)
+position = Vector2(740.3486, 316.34857)
 rotation = 4.742492
 scale = Vector2(0.08, 0.08)
 texture = ExtResource("8_ncsg4")
 
 [node name="CustomerLol14" type="Sprite2D" parent="." unique_id=915608210]
-position = Vector2(739.99994, 387)
+position = Vector2(744.3486, 387.34857)
 rotation = 4.742492
 scale = Vector2(0.08, 0.08)
 texture = ExtResource("8_ncsg4")
 
 [node name="CustomerLol15" type="Sprite2D" parent="." unique_id=890372631]
-position = Vector2(600.00006, 372.00003)
-rotation = 7.8422394
+position = Vector2(593.92004, 373.92)
+rotation = 7.853982
 scale = Vector2(0.08, 0.08)
 texture = ExtResource("8_ncsg4")
 
@@ -457,13 +457,13 @@ scale = Vector2(0.08, 0.08)
 texture = ExtResource("8_ncsg4")
 
 [node name="CustomerLol17" type="Sprite2D" parent="." unique_id=672486314]
-position = Vector2(379.00006, 305.00003)
+position = Vector2(375.87625, 304.87625)
 rotation = 7.8422394
 scale = Vector2(0.08, 0.08)
 texture = ExtResource("8_ncsg4")
 
 [node name="CustomerLol18" type="Sprite2D" parent="." unique_id=2138662844]
-position = Vector2(390.00006, 368.00003)
+position = Vector2(383.87625, 368.87625)
 rotation = 7.8422394
 scale = Vector2(0.08, 0.08)
 texture = ExtResource("8_ncsg4")

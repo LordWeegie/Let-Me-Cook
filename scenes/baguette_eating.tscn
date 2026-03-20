@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://jpcnv0kwy6ea" path="res://assets/tiles/baguette_tile.png" id="2_uuivr"]
 [ext_resource type="PackedScene" path="res://scenes/breakable_tile.tscn" id="3_uuivr"]
 [ext_resource type="Texture2D" uid="uid://df10jhet2nxr5" path="res://assets/tiles/arrow.png" id="5_k0mbf"]
+[ext_resource type="AudioStream" uid="uid://dpiicouhrbxhi" path="res://assets/songs/baguette.mp3" id="6_igekw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_887nw"]
 texture = ExtResource("2_uuivr")
@@ -146,6 +147,10 @@ shape = SubResource("RectangleShape2D_igekw")
 texture_filter = 1
 position = Vector2(1216, -247)
 texture = ExtResource("5_k0mbf")
+
+[node name="Baguette" type="AudioStreamPlayer" parent="." unique_id=1892011414]
+stream = ExtResource("6_igekw")
+autoplay = true
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Area2D2" to="." method="_on_area_2d_2_body_entered"]

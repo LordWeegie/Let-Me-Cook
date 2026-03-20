@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dm3c74y5u86j" path="res://assets/things/478234D9-48F2-45A2-AA9A-FD84EEE35D9C.jpeg" id="1_fgkus"]
 [ext_resource type="Script" path="res://scripts/title_screen.gd" id="1_sa3yf"]
+[ext_resource type="AudioStream" uid="uid://hx2f3aa2gdkq" path="res://assets/songs/theperfect.mp3" id="3_s4lrb"]
 
 [node name="Control" type="Control" unique_id=1047549883]
 layout_mode = 3
@@ -40,6 +41,11 @@ offset_top = 432.0
 offset_right = 707.0
 offset_bottom = 463.0
 text = "Create New Active Food"
+
+[node name="Theperfect" type="AudioStreamPlayer" parent="." unique_id=1870070977]
+stream = ExtResource("3_s4lrb")
+volume_db = -25.0
+autoplay = true
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]

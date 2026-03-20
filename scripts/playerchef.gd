@@ -19,6 +19,7 @@ var carrying_butter = false
 var carrying_croissant_dough = false
 var carrying_cut_croissant_dough = false
 var carrying_croissant = false
+var near_delivery_point1 = false
 var looking_at_delivery_point1 = false
 @onready var timer : Timer = $Timer
 @export var loading_bar1 : Node2D
@@ -62,9 +63,13 @@ func _physics_process(delta):
 		print("!!!")
 		get_tree().reload_current_scene()
 	if $RayCast2D.is_colliding():
-		if $RayCast2D.get_collider().is_in_group("delivery_point1"):
-			if carrying_baguette or carrying_croissant or carrying_coffee:
-				looking_at_delivery_point1 = true
+		if near_delivery_point1:
+			print("hello dude")
+			$Label4.text = "Press E to deliver food"
+			if Input.is_action_just_pressed("pickup"):
+				get_tree().change_scene_to_file("res://scenes/lobby.tscn")
+	if !near_delivery_point1:
+		$Label4.text = ""
 	if oven_open and carrying_cut_croissant_dough:
 		$Label4.text = "Press E to bake Croissant Dough"
 		if Input.is_action_just_pressed("pickup"):
@@ -203,7 +208,7 @@ func _physics_process(delta):
 			drop_items()
 	if looking_at_food and !looking_at_cfm:
 		$Label4.text = "Press E to pick up"
-	if !looking_at_food and !near_bowl and !oven_open and !looking_at_cfm and !near_cutting_board and !looking_at_delivery_point1:
+	if !looking_at_food and !near_bowl and !oven_open and !looking_at_cfm and !near_cutting_board and !looking_at_delivery_point1 and !near_delivery_point1:
 		$Label4.text = ""
 	if !carrying_food:
 		$Label.text = "Carrying: Nothing"

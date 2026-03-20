@@ -1,11 +1,16 @@
 [gd_scene format=3 uid="uid://bdrm5j2doksru"]
 
 [ext_resource type="Texture2D" uid="uid://b53cofa23tedm" path="res://assets/tiles/delivery_point.png" id="1_kdvxu"]
+[ext_resource type="Script" uid="uid://c7j2tn25xxdsp" path="res://scripts/delivery_point_1.gd" id="1_m5hd6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kdvxu"]
 size = Vector2(32, 32)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m5hd6"]
+size = Vector2(76, 66)
+
 [node name="StaticBody2D" type="StaticBody2D" unique_id=487359523 groups=["delivery_point1"]]
+script = ExtResource("1_m5hd6")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=326996784]
 texture_filter = 1
@@ -13,3 +18,11 @@ texture = ExtResource("1_kdvxu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1675913893]
 shape = SubResource("RectangleShape2D_kdvxu")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=2051469328]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=517120371]
+shape = SubResource("RectangleShape2D_m5hd6")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

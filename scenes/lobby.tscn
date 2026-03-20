@@ -1,13 +1,14 @@
 [gd_scene format=4 uid="uid://ip51cit8jx8"]
 
 [ext_resource type="Texture2D" uid="uid://bq10kqibwtr8x" path="res://assets/tiles/wall-floorset.png" id="1_5gu6x"]
-[ext_resource type="Script" path="res://scripts/lobby.gd" id="1_apkv3"]
+[ext_resource type="Script" uid="uid://bfkree4avhx8a" path="res://scripts/lobby.gd" id="1_apkv3"]
 [ext_resource type="Texture2D" uid="uid://7kfva1goubav" path="res://assets/tiles/floorT2.png" id="2_nqcc7"]
 [ext_resource type="PackedScene" uid="uid://bh8yc752t2ph6" path="res://scenes/waiter.tscn" id="2_q60fs"]
 [ext_resource type="Texture2D" uid="uid://bh40ck772fx8v" path="res://assets/tiles/counter.png" id="3_nqcc7"]
 [ext_resource type="PackedScene" path="res://scenes/table.tscn" id="5_pc087"]
 [ext_resource type="PackedScene" path="res://scenes/pit.tscn" id="7_omrgh"]
 [ext_resource type="Texture2D" uid="uid://d2v6wkquemg4l" path="res://assets/french_dude/customer_lol.png" id="8_ncsg4"]
+[ext_resource type="AudioStream" uid="uid://dhcajysw0fm61" path="res://assets/songs/waiter-section.mp3" id="9_07nfq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nqcc7"]
 texture = ExtResource("1_5gu6x")
@@ -93,13 +94,6 @@ scale = Vector2(2, 3)
 position = Vector2(353, 302)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D11" unique_id=1386597704]
-position = Vector2(21.5, 14)
-shape = SubResource("RectangleShape2D_pc087")
-
-[node name="Area2D10" type="Area2D" parent="." unique_id=1052783099 groups=["table_area"]]
-position = Vector2(18, 298)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D10" unique_id=625118376]
 position = Vector2(21.5, 14)
 shape = SubResource("RectangleShape2D_pc087")
 
@@ -486,8 +480,7 @@ rotation = 7.8422394
 scale = Vector2(0.08, 0.08)
 texture = ExtResource("8_ncsg4")
 
-[node name="CustomerLol21" type="Sprite2D" parent="." unique_id=1257936092]
-position = Vector2(29.000004, 318.00003)
-rotation = 6.351132
-scale = Vector2(0.08, 0.08)
-texture = ExtResource("8_ncsg4")
+[node name="WaiterSection" type="AudioStreamPlayer" parent="." unique_id=340680537]
+stream = ExtResource("9_07nfq")
+volume_db = -25.8
+autoplay = true

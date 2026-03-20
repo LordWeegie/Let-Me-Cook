@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bko3h7uxk6ss6" path="res://scenes/croissant_tile.tscn" id="1_5bna3"]
 [ext_resource type="Script" uid="uid://cw1h4ptoec17v" path="res://scripts/crossiant_eating.gd" id="1_cs82u"]
 [ext_resource type="PackedScene" uid="uid://dhm5cd30k2f0p" path="res://scenes/customer.tscn" id="2_cs82u"]
+[ext_resource type="AudioStream" uid="uid://bkki3fklykoyd" path="res://assets/songs/croissant.mp3" id="2_wx5fj"]
 [ext_resource type="Texture2D" uid="uid://dxeju40s8v2h6" path="res://assets/tiles/croissant2.png" id="4_5x2x3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5bna3"]
@@ -12,6 +13,10 @@ size = Vector2(595, 15)
 
 [node name="Node2D" type="Node2D" unique_id=1010147544]
 script = ExtResource("1_cs82u")
+
+[node name="Croissant" type="AudioStreamPlayer" parent="." unique_id=1716100150]
+stream = ExtResource("2_wx5fj")
+autoplay = true
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1123167708]
 offset_left = -363.0

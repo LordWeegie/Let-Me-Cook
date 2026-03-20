@@ -1,9 +1,10 @@
-[gd_scene format=3 uid="uid://n106gbxeyfi0"]
+[gd_scene format=3 uid="uid://coup4qkqtcs8y"]
 
-[ext_resource type="PackedScene" uid="uid://b65bbjh0qmdeg" path="res://scenes/player_coffee.tscn" id="1_17jqh"]
-[ext_resource type="Script" uid="uid://dspq0wac8pffr" path="res://scripts/coffee_level.gd" id="1_j8iy6"]
-[ext_resource type="PackedScene" uid="uid://dlca642a8f3ed" path="res://scenes/enemy_coffee.tscn" id="2_xx74y"]
-[ext_resource type="PackedScene" uid="uid://bmuro73tr3ttg" path="res://scenes/coffee_map.tscn" id="3_j8iy6"]
+[ext_resource type="PackedScene" path="res://scenes/player_coffee.tscn" id="1_17jqh"]
+[ext_resource type="Script" path="res://scripts/coffee_level.gd" id="1_j8iy6"]
+[ext_resource type="PackedScene" path="res://scenes/enemy_coffee.tscn" id="2_xx74y"]
+[ext_resource type="PackedScene" path="res://scenes/coffee_map.tscn" id="3_j8iy6"]
+[ext_resource type="AudioStream" uid="uid://bfeiefee2ip61" path="res://assets/songs/doomlevel.mp3" id="5_ugtoa"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_17jqh"]
 sky_top_color = Color(0, 0, 0, 1)
@@ -74,6 +75,10 @@ shape = SubResource("BoxShape3D_51x6w")
 
 [node name="player_spawn" type="Node3D" parent="." unique_id=1830567524]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.33519, 3.9599729, -3.4225879)
+
+[node name="Doomlevel" type="AudioStreamPlayer" parent="." unique_id=1177056318]
+stream = ExtResource("5_ugtoa")
+autoplay = true
 
 [connection signal="area_entered" from="coffee_touched" to="." method="_on_coffee_touched_area_entered"]
 [connection signal="body_entered" from="coffee_touched" to="." method="_on_coffee_touched_body_entered"]

@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://ml2xx5kolqse" path="res://Untitled_Artwork.png" id="1_0bpdh"]
 [ext_resource type="Script" path="res://scripts/credits.gd" id="1_2ckv8"]
+[ext_resource type="AudioStream" uid="uid://hx2f3aa2gdkq" path="res://assets/songs/theperfect.mp3" id="3_0ctdu"]
 
 [node name="Control" type="Control" unique_id=517428581]
 layout_mode = 3
@@ -41,7 +42,7 @@ Mr. Coconut
 HoneyDev1
 
 Music:
-Mr. Coconut (beginner don't expect much lol)
+Mr. Coconut (beginner pianist don't expect much lol)
 
 SFX:
 Morro
@@ -78,6 +79,11 @@ offset_bottom = 591.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Quit Game"
+
+[node name="Theperfect" type="AudioStreamPlayer" parent="." unique_id=1060340383]
+stream = ExtResource("3_0ctdu")
+volume_db = -25.0
+autoplay = true
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]

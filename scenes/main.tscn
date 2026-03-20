@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://cb81q4r22h4ux" path="res://scenes/milk.tscn" id="14_jkv2x"]
 [ext_resource type="PackedScene" uid="uid://d22fkxcpwph7b" path="res://scenes/cutting_board.tscn" id="15_jkv2x"]
 [ext_resource type="PackedScene" uid="uid://bdrm5j2doksru" path="res://scenes/delivery_point1.tscn" id="16_jbj1t"]
+[ext_resource type="AudioStream" uid="uid://hx2f3aa2gdkq" path="res://assets/songs/theperfect.mp3" id="17_muem4"]
 
 [node name="main" type="Node2D" unique_id=635454507]
 script = ExtResource("1_85g3d")
@@ -84,6 +85,11 @@ position = Vector2(144, 121)
 loading_bar1 = NodePath("../Loadingbar")
 loading_bar2 = NodePath("../Loadingbar2")
 loading_bar3 = NodePath("../Loadingbar3")
+
+[node name="Theperfect" type="AudioStreamPlayer" parent="." unique_id=1000636971]
+stream = ExtResource("17_muem4")
+volume_db = -11.488
+autoplay = true
 
 [editable path="Loadingbar"]
 [editable path="Loadingbar2"]
